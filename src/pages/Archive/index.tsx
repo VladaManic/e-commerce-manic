@@ -12,7 +12,7 @@ import { ProductObj } from '../../types/interfaces';
 const Archive = () => {
 	const productsCtx = useContext(ProductsContext);
 
-	console.log(productsCtx.products);
+	//console.log(productsCtx.products);
 
 	return (
 		<AllWrap>

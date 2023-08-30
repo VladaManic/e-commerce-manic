@@ -16,10 +16,6 @@ export default createGlobalStyle`
         font-size: 100%;
     }
 
-    .main {
-        background-color: ${color.defaultBg};
-    }
-
     h1,
     h2,
     p {
@@ -36,6 +32,10 @@ export default createGlobalStyle`
     img {
         max-width: 100%;
         height: auto;
+    }
+
+    .default-link {
+        text-decoration: none;
     }
 `;
 
