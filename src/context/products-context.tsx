@@ -1,8 +1,10 @@
 import { createContext, useState } from 'react';
+// Types
+import {ProductObj} from '../types/interfaces';
 
 const ProductsContext = createContext({
 	products: [],
-	setData: (data: any) => {[]},
+	setData: (data: ProductObj[]) => {null},
 });
 
 export function ProductsContextProvider(props: any){

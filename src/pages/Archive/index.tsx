@@ -6,16 +6,18 @@ import SingleProduct from '../../components/SingleProduct';
 // Styles
 import { AllWrap } from './style';
 
+// Types
+import { ProductObj } from '../../types/interfaces';
+
 const Archive = () => {
 	const productsCtx = useContext(ProductsContext);
 
-	//console.log(productsCtx.products);
+	console.log(productsCtx.products);
 
 	return (
 		<AllWrap>
-			{productsCtx.products.map((singleProduct: any) => (
+			{productsCtx.products.map((singleProduct: ProductObj) => (
 				<SingleProduct key={singleProduct.id} single={singleProduct} />
-				// singleProduct.title
 			))}
 		</AllWrap>
 	)

@@ -11,7 +11,7 @@ function App() {
   const fetchData = () => {
     fetch("https://fakestoreapi.com/products")
       .then(res=>res.json())
-      //.then(json=>console.log(json))
+      // .then(json=>console.log(json))
       .then((data) => {
 				productsCtx.setData(data);
       })
