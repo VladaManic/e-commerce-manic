@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
+import { color } from './variables';
 
 export default createGlobalStyle`
     html,
@@ -13,6 +14,10 @@ export default createGlobalStyle`
     body {
         height: 100%;
         font-size: 100%;
+    }
+
+    .main {
+        background-color: ${color.defaultBg};
     }
 
     h1,
