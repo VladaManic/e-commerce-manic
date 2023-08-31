@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
+import makeExcerpt from '../../helpers/makeExcerpt';
 
 // Styles
-import { SingleWrap, CartBtn, ImgWrap, FeaturedImg, PriceParagraph, TitleWrap } from './style';
+import { SingleWrap, CartBtn, ImgWrap, FeaturedImg, PriceParagraph, TitleWrap, DescriptionWrap, FilterBtn } from './style';
 
 // Types
 import { ProductObj } from '../../types/interfaces';
@@ -21,10 +22,10 @@ const SingleProduct = ({single}: Props) => {
 			</NavLink>
 			<PriceParagraph>{single.price} $</PriceParagraph>
 			<NavLink to={`/article/${single.id}`} className="default-link">
-				<TitleWrap>{single.title}</TitleWrap>
+				<TitleWrap>{makeExcerpt(single.title, 8, false)}</TitleWrap>
 			</NavLink>
-			<p>{single.description}</p>
-			<button>{single.category}</button>
+			<DescriptionWrap>{makeExcerpt(single.description, 17, true)}</DescriptionWrap>
+			<FilterBtn>{single.category}</FilterBtn>
 		</SingleWrap>
 	)
 }

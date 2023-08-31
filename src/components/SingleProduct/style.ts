@@ -39,7 +39,17 @@ export const PriceParagraph = styled.p`
 `;
 
 export const TitleWrap = styled.p`
+   margin-bottom: 10px;
    font-size: 18px;
    font-weight: 500;
    color: ${color.titleBlue};
+`;
+
+export const DescriptionWrap = styled.p`
+   margin-bottom: 10px;
+`;
+
+export const FilterBtn = styled.button`
+   text-transform: uppercase;
+   color: ${color.filterBlue};
 `;
