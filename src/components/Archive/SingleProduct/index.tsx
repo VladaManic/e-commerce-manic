@@ -2,6 +2,7 @@ import {useContext} from 'react';
 import ProductsContext from '../../../context/products-context';
 import { NavLink } from 'react-router-dom';
 import makeExcerpt from '../../../helpers/makeExcerpt';
+import clsx from 'clsx';
 
 // Styles
 import { SingleWrap, CartBtn, ImgWrap, FeaturedImg, PriceParagraph, TitleWrap, DescriptionWrap, FilterBtn } from './style';
@@ -22,6 +23,7 @@ const SingleProduct = ({single}: Props) => {
 		const categoryName = button.name;
 		productsCtx.setFilteredGroup(categoryName);
 		productsCtx.setCategoryName(categoryName);
+		productsCtx.setFilterSelected();
 	}
 
 	return (
@@ -37,7 +39,7 @@ const SingleProduct = ({single}: Props) => {
 				<TitleWrap>{makeExcerpt(single.title, 8, false)}</TitleWrap>
 			</NavLink>
 			<DescriptionWrap>{makeExcerpt(single.description, 17, true)}</DescriptionWrap>
-			<FilterBtn name={single.category} onClick={onClickHandler}>{single.category}</FilterBtn>
+			<FilterBtn name={single.category} onClick={onClickHandler} className={clsx(productsCtx.filterSelected && 'filter-selected')}>{single.category}</FilterBtn>
 		</SingleWrap>
 	)
 }

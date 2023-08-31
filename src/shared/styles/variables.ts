@@ -6,4 +6,6 @@ export const color = {
 	titleBlue: '#00008b',
 	filterBlue: '#0d3c94',
 	borderGray: '#cfcfcf',
+	borderGreen: '#46940d',
+	filterRed: '#b61a1a',
 }

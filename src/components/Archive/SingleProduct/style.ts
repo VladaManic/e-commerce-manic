@@ -56,4 +56,8 @@ export const DescriptionWrap = styled.p`
 export const FilterBtn = styled.button`
    text-transform: uppercase;
    color: ${color.filterBlue};
+
+   &.filter-selected {
+		pointer-events: none;
+	}
 `;
