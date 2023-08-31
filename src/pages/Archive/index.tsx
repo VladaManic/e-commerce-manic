@@ -12,11 +12,11 @@ import { ProductObj } from '../../types/interfaces';
 const Archive = () => {
 	const productsCtx = useContext(ProductsContext);
 
-	//console.log(productsCtx.products);
+	//console.log(productsCtx.filteredGroup);
 
 	return (
 		<AllWrap>
-			{productsCtx.products.map((singleProduct: ProductObj) => (
+			{productsCtx.filteredGroup.map((singleProduct: ProductObj) => (
 				<SingleProduct key={singleProduct.id} single={singleProduct} />
 			))}
 		</AllWrap>

@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import ProductsContext from '../../context/products-context';
 import { NavLink } from 'react-router-dom';
 import makeExcerpt from '../../helpers/makeExcerpt';
 
@@ -12,6 +14,15 @@ interface Props {
 }
 
 const SingleProduct = ({single}: Props) => {
+	const productsCtx = useContext(ProductsContext);
+
+	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		const button: HTMLButtonElement = e.currentTarget;
+		const categoryName = button.name;
+		productsCtx.setFilteredGroup(categoryName);
+	}
+
 	return (
 		<SingleWrap>
 			<CartBtn>+</CartBtn>
@@ -25,7 +36,7 @@ const SingleProduct = ({single}: Props) => {
 				<TitleWrap>{makeExcerpt(single.title, 8, false)}</TitleWrap>
 			</NavLink>
 			<DescriptionWrap>{makeExcerpt(single.description, 17, true)}</DescriptionWrap>
-			<FilterBtn>{single.category}</FilterBtn>
+			<FilterBtn name={single.category} onClick={onClickHandler}>{single.category}</FilterBtn>
 		</SingleWrap>
 	)
 }
