@@ -5,4 +5,5 @@ export const color = {
 	priceGreen: '#016141',
 	titleBlue: '#00008b',
 	filterBlue: '#0d3c94',
+	borderGray: '#cfcfcf',
 }

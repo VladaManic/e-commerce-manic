@@ -1,13 +1,13 @@
 import {useContext} from 'react';
-import ProductsContext from '../../context/products-context';
+import ProductsContext from '../../../context/products-context';
 import { NavLink } from 'react-router-dom';
-import makeExcerpt from '../../helpers/makeExcerpt';
+import makeExcerpt from '../../../helpers/makeExcerpt';
 
 // Styles
 import { SingleWrap, CartBtn, ImgWrap, FeaturedImg, PriceParagraph, TitleWrap, DescriptionWrap, FilterBtn } from './style';
 
 // Types
-import { ProductObj } from '../../types/interfaces';
+import { ProductObj } from '../../../types/interfaces';
 
 interface Props {
 	single: ProductObj;
@@ -21,6 +21,7 @@ const SingleProduct = ({single}: Props) => {
 		const button: HTMLButtonElement = e.currentTarget;
 		const categoryName = button.name;
 		productsCtx.setFilteredGroup(categoryName);
+		productsCtx.setCategoryName(categoryName);
 	}
 
 	return (

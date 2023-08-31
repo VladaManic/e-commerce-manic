@@ -6,14 +6,17 @@ import {ProductObj} from '../types/interfaces';
 const ProductsContext = createContext({
 	products: [],
 	filteredGroup: [],
+	category: 'All',
 	setData: (data: ProductObj[]) => {null},
 	setDefaultGroup: (data: ProductObj[]) => {null},
 	setFilteredGroup: (param: string) => {null},
+	setCategoryName: (param: string) => {null},
 });
 
 export function ProductsContextProvider(props: any){
-	const [currentProducts, setCurrentProducts] = useState<any>([])
-	const [currentGroup, setCurrentGroup] = useState<any>([])
+	const [currentProducts, setCurrentProducts] = useState<any>([]);
+	const [currentGroup, setCurrentGroup] = useState<any>([]);
+	const [currentCategory, setCurrentCategory] = useState<string>('All');
 
 	function setDataHandler(data: ProductObj[]){
 		setCurrentProducts(data);
@@ -21,6 +24,10 @@ export function ProductsContextProvider(props: any){
 
 	function setDefaultGroupHandler(data: ProductObj[]){
 		setCurrentGroup(data)
+	}
+
+	function setCategoryNameHandler(param: string){
+		setCurrentCategory(param);
 	}
 
 	function setFilteredGroupHandler(param: string){
@@ -31,9 +38,11 @@ export function ProductsContextProvider(props: any){
 	const context = {
 		products: currentProducts,
 		filteredGroup: currentGroup,
+		category: currentCategory,
 		setData: setDataHandler,
 		setDefaultGroup: setDefaultGroupHandler,
 		setFilteredGroup: setFilteredGroupHandler,
+		setCategoryName: setCategoryNameHandler,
 	} 
 
 	return (

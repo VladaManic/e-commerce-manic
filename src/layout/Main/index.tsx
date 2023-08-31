@@ -1,6 +1,4 @@
-import {useContext} from 'react';
 import { Routes, Route } from 'react-router-dom';
-import ProductsContext from '../../context/products-context';
 
 import Archive from '../../pages/Archive';
 import Single from '../../pages/Single';

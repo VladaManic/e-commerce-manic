@@ -1,5 +1,5 @@
 import styled, {  } from 'styled-components';
-import { color } from '../../shared/styles/variables';
+import { color } from '../../../shared/styles/variables';
 
 export const SingleWrap = styled.div`
    box-sizing: border-box;
@@ -8,6 +8,10 @@ export const SingleWrap = styled.div`
    margin-bottom: 20px;
    padding: 20px;
    background-color: ${color.defaultWhite};
+   border: 1px solid ${color.borderGray};
+   border-bottom-left-radius: 30px;
+   border-top-right-radius: 30px;
+   box-shadow: 0 0 5px rgb(0 0 0/10%);
 `;
 
 export const CartBtn = styled.button`
