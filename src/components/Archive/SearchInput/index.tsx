@@ -9,6 +9,7 @@ const SearchInput = () => {
 		productsCtx.getSearch(input.value.toLowerCase())
 	}
 
+	
 	return (
 		<>
 			<input type="text" id="search" placeholder="Start searching..." onKeyUp={keyUpHandler} />
