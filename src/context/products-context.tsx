@@ -10,9 +10,10 @@ const ProductsContext = createContext({
 	filterSelected: false,
 	setData: (data: ProductObj[]) => {null},
 	setDefaultGroup: (data: ProductObj[]) => {null},
-	setFilteredGroup: (param: string) => {null},
+	getFilteredGroup: (param: string) => {null},
 	setCategoryName: (param: string) => {null},
 	setFilterSelected: () => {null},
+	getSearch: (param: string) => {null},
 });
 
 export function ProductsContextProvider(props: any){
@@ -21,24 +22,31 @@ export function ProductsContextProvider(props: any){
 	const [currentCategory, setCurrentCategory] = useState<string>('All');
 	const [currentFilterSelected, setCurrentFilterSelected] = useState<boolean>(false);
 
-	function setDataHandler(data: ProductObj[]){
+	const setDataHandler = (data: ProductObj[]) => {
 		setCurrentProducts(data);
 	}
 
-	function setDefaultGroupHandler(data: ProductObj[]){
+	const setDefaultGroupHandler = (data: ProductObj[]) => {
 		setCurrentGroup(data)
 	}
 
-	function setCategoryNameHandler(param: string){
+	const setCategoryNameHandler = (param: string) => {
 		setCurrentCategory(param);
 	}
 
-	function setFilterSelectedHandler(){
+	const setFilterSelectedHandler = () => {
 		setCurrentFilterSelected(!currentFilterSelected);
 	}
 
-	function setFilteredGroupHandler(param: string){
+	const getFilteredGroupHandler = (param: string) => {
 		const newGroup = currentProducts.filter((singleProduct: ProductObj) => singleProduct.category === param);
+		setCurrentGroup(newGroup);
+	}
+
+	const getSearchHandler = (param: string) => {
+		const newGroup = currentProducts.filter((singleProduct: ProductObj) => { 
+			return singleProduct.title.toLowerCase().includes(param)
+		});
 		setCurrentGroup(newGroup);
 	}
 
@@ -49,9 +57,10 @@ export function ProductsContextProvider(props: any){
 		filterSelected: currentFilterSelected,
 		setData: setDataHandler,
 		setDefaultGroup: setDefaultGroupHandler,
-		setFilteredGroup: setFilteredGroupHandler,
+		getFilteredGroup: getFilteredGroupHandler,
 		setCategoryName: setCategoryNameHandler,
 		setFilterSelected: setFilterSelectedHandler,
+		getSearch: getSearchHandler,
 	} 
 
 	return (
