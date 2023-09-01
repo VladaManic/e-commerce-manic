@@ -21,7 +21,7 @@ const SingleProduct = ({single}: Props) => {
 		e.preventDefault();
 		const button: HTMLButtonElement = e.currentTarget;
 		const categoryName = button.name;
-		productsCtx.setFilteredGroup(categoryName);
+		productsCtx.getFilteredGroup(categoryName);
 		productsCtx.setCategoryName(categoryName);
 		productsCtx.setFilterSelected();
 	}
