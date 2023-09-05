@@ -16,8 +16,10 @@ export const SingleWrap = styled.div`
 
 export const CartBtn = styled.button`
 	position: absolute;
-   width: 50px;
-   height: 50px;
+   top: 10px;
+   right: 10px;
+   width: 45px;
+   height: 45px;
    background-color: ${color.cartOrange};
    border-radius: 50%;
    font-size: 23px;

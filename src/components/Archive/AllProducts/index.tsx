@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import ProductsContext from '../../../context/products-context';
 
 import SingleProduct from '../SingleProduct';
@@ -11,13 +11,21 @@ import { ProductObj } from '../../../types/interfaces';
 
 const AllProducts = () => {
 	const productsCtx = useContext(ProductsContext);
+	const [cartItems, setCartItems] = useState<any>([]);
 
-	//console.log(productsCtx.filteredGroup);
+	useEffect(() => {
+		console.log(cartItems);
+	}, [cartItems]);
+
+	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+		const id = parseInt(e.currentTarget.id);
+		console.log(id);
+	}
 
 	return (
 		<AllWrap>
 			{productsCtx.filteredGroup.map((singleProduct: ProductObj) => (
-				<SingleProduct key={singleProduct.id} single={singleProduct} />
+				<SingleProduct key={singleProduct.id} single={singleProduct} onClickCart={onClickCartHandler} />
 			))}
 		</AllWrap>
 	)

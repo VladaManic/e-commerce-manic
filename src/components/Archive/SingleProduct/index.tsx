@@ -12,9 +12,10 @@ import { ProductObj } from '../../../types/interfaces';
 
 interface Props {
 	single: ProductObj;
+	onClickCart: any;
 }
 
-const SingleProduct = ({single}: Props) => {
+const SingleProduct = ({single, onClickCart}: Props) => {
 	const productsCtx = useContext(ProductsContext);
 
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
@@ -28,7 +29,7 @@ const SingleProduct = ({single}: Props) => {
 
 	return (
 		<SingleWrap>
-			<CartBtn>+</CartBtn>
+			<CartBtn id={single.id.toString()} onClick={onClickCart}>+</CartBtn>
 			<NavLink to={`/article/${single.id}`}>
 				<ImgWrap>
 					<FeaturedImg src={single.image} alt={single.title} />
