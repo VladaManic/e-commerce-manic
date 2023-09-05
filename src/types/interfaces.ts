@@ -6,3 +6,8 @@ export interface ProductObj {
 	image: string,
 	price: number
 }
+
+export interface CartItem {
+	id: number,
+	quantity: number
+}

@@ -7,7 +7,7 @@ import SingleProduct from '../SingleProduct';
 import { AllWrap } from './style';
 
 // Types
-import { ProductObj } from '../../../types/interfaces';
+import { ProductObj, CartItem } from '../../../types/interfaces';
 
 const AllProducts = () => {
 	const productsCtx = useContext(ProductsContext);
@@ -20,11 +20,11 @@ const AllProducts = () => {
 	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.id);
 		let newCartItems;
-		const setItem = cartItems.filter((item: any) => item.id === id);
+		const setItem = cartItems.filter((item: CartItem) => item.id === id);
 		if(setItem.length > 0){
 			const currentQuantity = setItem[0].quantity;
 			const newQuantity = currentQuantity + 1;
-			newCartItems = cartItems.map((item: any) => item.id === id ? { ...item, quantity: newQuantity} : item)
+			newCartItems = cartItems.map((item: CartItem) => item.id === id ? { ...item, quantity: newQuantity} : item)
 		} else {
 			newCartItems = [...cartItems, {id: id, quantity: 1}]
 		}
