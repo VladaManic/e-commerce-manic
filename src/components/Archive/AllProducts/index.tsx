@@ -11,7 +11,7 @@ import { ProductObj, CartItem } from '../../../types/interfaces';
 
 const AllProducts = () => {
 	const productsCtx = useContext(ProductsContext);
-	const [cartItems, setCartItems] = useState<any>([]);
+	const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
 	useEffect(() => {
 		console.log(cartItems);
