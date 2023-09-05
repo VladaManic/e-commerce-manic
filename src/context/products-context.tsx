@@ -27,7 +27,7 @@ export function ProductsContextProvider(props: any){
 	}
 
 	const setDefaultGroupHandler = (data: ProductObj[]) => {
-		setCurrentGroup(data)
+		setCurrentGroup(data);
 	}
 
 	const setCategoryNameHandler = (param: string) => {
@@ -44,9 +44,14 @@ export function ProductsContextProvider(props: any){
 	}
 
 	const getSearchHandler = (param: string) => {
-		const newGroup = currentProducts.filter((singleProduct: ProductObj) => { 
-			return singleProduct.title.toLowerCase().includes(param)
-		});
+		let newGroup;
+		if(param !== 'all'){
+			newGroup = currentProducts.filter((singleProduct: ProductObj) => { 
+				return singleProduct.title.toLowerCase().includes(param)
+			});
+		} else {
+			newGroup = currentProducts;
+		}
 		setCurrentGroup(newGroup);
 	}
 
