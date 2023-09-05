@@ -11,10 +11,11 @@ import { ProductObj, CartItem } from '../../../types/interfaces';
 
 const AllProducts = () => {
 	const productsCtx = useContext(ProductsContext);
-	const [cartItems, setCartItems] = useState<CartItem[]>([]);
+	const itemsStored = JSON.parse(localStorage.getItem('items') || "");
+	const [cartItems, setCartItems] = useState<CartItem[]>(itemsStored);
 
 	useEffect(() => {
-		console.log(cartItems);
+		localStorage.setItem('items', JSON.stringify(cartItems));
 	}, [cartItems]);
 
 	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
