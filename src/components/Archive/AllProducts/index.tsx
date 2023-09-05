@@ -19,7 +19,16 @@ const AllProducts = () => {
 
 	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.id);
-		console.log(id);
+		let newCartItems;
+		const setItem = cartItems.filter((item: any) => item.id === id);
+		if(setItem.length > 0){
+			const currentQuantity = setItem[0].quantity;
+			const newQuantity = currentQuantity + 1;
+			newCartItems = cartItems.map((item: any) => item.id === id ? { ...item, quantity: newQuantity} : item)
+		} else {
+			newCartItems = [...cartItems, {id: id, quantity: 1}]
+		}
+		setCartItems(newCartItems);
 	}
 
 	return (
