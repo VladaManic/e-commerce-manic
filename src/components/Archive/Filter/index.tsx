@@ -11,7 +11,7 @@ const Filter = () => {
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const button: HTMLButtonElement = e.currentTarget;
 		if(button.classList.contains('filter-selected')){
-			productsCtx.setDefaultGroup(productsCtx.products);
+			productsCtx.getFilteredGroup('All');
 			productsCtx.setCategoryName('All');
 			productsCtx.setFilterSelected();
 		}

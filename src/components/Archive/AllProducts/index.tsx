@@ -16,6 +16,7 @@ const AllProducts = () => {
 
 	useEffect(() => {
 		localStorage.setItem('items', JSON.stringify(cartCtx.items));
+		//console.log(cartCtx.items);
 	}, [cartCtx.items]);
 
 	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {

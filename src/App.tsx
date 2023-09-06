@@ -14,7 +14,6 @@ function App() {
       // .then(json=>console.log(json))
       .then((data) => {
 				productsCtx.setData(data);
-        productsCtx.setDefaultGroup(data);
       })
   };
 	useEffect(() => {
