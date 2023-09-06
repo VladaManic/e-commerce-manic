@@ -8,4 +8,8 @@ export const HeaderWrap = styled.div`
 
 export const CartIcon = styled.img`
     width: 50px;
+
+    &.empty-cart {
+      filter: grayscale(1);
+    }
 `;

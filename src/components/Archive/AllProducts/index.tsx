@@ -4,10 +4,7 @@ import CartContext from '../../../context/cart-context';
 
 import SingleProduct from '../SingleProduct';
 
-// Styles
 import { AllWrap } from './style';
-
-// Types
 import { ProductObj, CartItem } from '../../../types/interfaces';
 
 const AllProducts = () => {
