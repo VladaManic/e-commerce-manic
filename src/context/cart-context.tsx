@@ -5,15 +5,16 @@ import {CartItem} from '../types/interfaces';
 
 const CartContext = createContext({
 	items: [],
-	getItems: (data: CartItem[]) => {null},
+	getItems: () => {null},
 	setItems: (data: CartItem[]) => {null},
 });
 
 export function CartContextProvider(props: any){
+	//localStorage.clear();
 	const itemsStored = localStorage["items"] ? JSON.parse(localStorage.getItem('items') || "") : [];
 	const [currentItems, setCurrentItems] = useState<any>(itemsStored);
 
-	const getItemsHandler = (data: CartItem[]) => {
+	const getItemsHandler = () => {
 		return currentItems;
 	}
 

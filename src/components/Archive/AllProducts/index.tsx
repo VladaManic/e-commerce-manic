@@ -16,19 +16,20 @@ const AllProducts = () => {
 
 	useEffect(() => {
 		localStorage.setItem('items', JSON.stringify(cartCtx.items));
-		//console.log(cartCtx.items);
+		console.log(cartCtx.items);
 	}, [cartCtx.items]);
 
 	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.id);
+		const price = parseFloat(e.currentTarget.name);
 		let newCartItems;
 		const setItem = cartCtx.items.filter((item: CartItem) => item.id === id);
 		if(setItem.length > 0){
-			const currentQuantity = setItem[0]['quantity'];
-			const newQuantity = currentQuantity + 1;
-			newCartItems = cartCtx.items.map((item: CartItem) => item.id === id ? { ...item, quantity: newQuantity} : item)
+			const newQuantity = setItem[0]['quantity'] + 1;
+			const totalPrice = setItem[0]['total'] + price;
+			newCartItems = cartCtx.items.map((item: CartItem) => item.id === id ? { ...item, quantity: newQuantity, price: price, total: totalPrice} : item)
 		} else {
-			newCartItems = [...cartCtx.items, {id: id, quantity: 1}]
+			newCartItems = [...cartCtx.items, {id: id, quantity: 1, price: price, total: price}]
 		}
 		cartCtx.setItems(newCartItems);
 	}

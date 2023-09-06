@@ -29,7 +29,7 @@ const SingleProduct = ({single, onClickCart}: Props) => {
 
 	return (
 		<SingleWrap>
-			<CartBtn id={single.id.toString()} onClick={onClickCart}>+</CartBtn>
+			<CartBtn id={single.id.toString()} name={single.price.toString()} onClick={onClickCart}>+</CartBtn>
 			<NavLink to={`/article/${single.id}`}>
 				<ImgWrap>
 					<FeaturedImg src={single.image} alt={single.title} />
