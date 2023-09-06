@@ -14,12 +14,17 @@ export default createGlobalStyle`
     body {
         height: 100%;
         font-size: 100%;
+        font-family: 'Roboto', sans-serif;
     }
 
     h1,
     h2,
     p {
         margin: 0;
+    }
+
+    p {
+        font-size: 12px;
     }
 
     button {
