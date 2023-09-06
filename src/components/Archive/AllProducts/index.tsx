@@ -1,5 +1,6 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect} from 'react';
 import ProductsContext from '../../../context/products-context';
+import CartContext from '../../../context/cart-context';
 
 import SingleProduct from '../SingleProduct';
 
@@ -11,25 +12,24 @@ import { ProductObj, CartItem } from '../../../types/interfaces';
 
 const AllProducts = () => {
 	const productsCtx = useContext(ProductsContext);
-	const itemsStored = JSON.parse(localStorage.getItem('items') || "");
-	const [cartItems, setCartItems] = useState<CartItem[]>(itemsStored);
+	const cartCtx = useContext(CartContext);
 
 	useEffect(() => {
-		localStorage.setItem('items', JSON.stringify(cartItems));
-	}, [cartItems]);
+		localStorage.setItem('items', JSON.stringify(cartCtx.items));
+	}, [cartCtx.items]);
 
 	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.id);
 		let newCartItems;
-		const setItem = cartItems.filter((item: CartItem) => item.id === id);
+		const setItem = cartCtx.items.filter((item: CartItem) => item.id === id);
 		if(setItem.length > 0){
-			const currentQuantity = setItem[0].quantity;
+			const currentQuantity = setItem[0]['quantity'];
 			const newQuantity = currentQuantity + 1;
-			newCartItems = cartItems.map((item: CartItem) => item.id === id ? { ...item, quantity: newQuantity} : item)
+			newCartItems = cartCtx.items.map((item: CartItem) => item.id === id ? { ...item, quantity: newQuantity} : item)
 		} else {
-			newCartItems = [...cartItems, {id: id, quantity: 1}]
+			newCartItems = [...cartCtx.items, {id: id, quantity: 1}]
 		}
-		setCartItems(newCartItems);
+		cartCtx.setItems(newCartItems);
 	}
 
 	return (
