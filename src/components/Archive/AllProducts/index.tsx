@@ -29,6 +29,7 @@ const AllProducts = () => {
 			newCartItems = [...cartCtx.items, {id: id, quantity: 1, price: price, total: price}]
 		}
 		cartCtx.setItems(newCartItems);
+		cartCtx.setAnimation();
 	}
 
 	return (

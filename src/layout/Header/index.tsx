@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import CartContext from '../../context/cart-context';
 import clsx from 'clsx';
 
-import { HeaderWrap, CartBadge, CartIcon, CartCount, CartNumber } from './style';
+import { HeaderWrap, CartBadge, CartIcon, CartCount, CartNumber, AnimationWrap, CartAnimation } from './style';
 import shoppingCart from '../../assets/img/shopping-cart.png';
 
 const Header = () => {
@@ -17,6 +17,9 @@ const Header = () => {
 				<CartCount className={clsx(cartCtx.items.length === 0 && 'empty-cart')}>
 					<CartNumber>{cartCtx.items.length !== 0 && cartCtx.items.length}</CartNumber>
 				</CartCount>
+				<AnimationWrap>
+					<CartAnimation className={clsx(cartCtx.animationBoolean && 'show')}>Item(s) added</CartAnimation>
+				</AnimationWrap>
 			</CartBadge>
 		</HeaderWrap>
 	)
