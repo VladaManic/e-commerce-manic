@@ -1,6 +1,7 @@
 export const color = {
 	defaultBg: '#f0f2f5',
 	defaultWhite: '#fff',
+	defaultBlack: '#000',
 	cartOrange: '#FFA500',
 	priceGreen: '#016141',
 	titleBlue: '#00008b',

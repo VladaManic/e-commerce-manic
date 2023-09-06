@@ -7,6 +7,19 @@ export const HeaderWrap = styled.div`
     padding: 10px;
 `;
 
+export const LogoWrap = styled.div`
+    display: flex;
+    align-items: center;
+
+    .logo-link {
+      font-size: 24px;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: ${color.defaultBlack};
+    }
+`;
+
 export const CartBadge = styled.div`
     position: relative;
     display: flex;

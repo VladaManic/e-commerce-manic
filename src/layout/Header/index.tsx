@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import CartContext from '../../context/cart-context';
 import clsx from 'clsx';
 
-import { HeaderWrap, CartBadge, CartIcon, CartCount, CartNumber, AnimationWrap, CartAnimation } from './style';
+import { HeaderWrap, LogoWrap, CartBadge, CartIcon, CartCount, CartNumber, AnimationWrap, CartAnimation } from './style';
 import shoppingCart from '../../assets/img/shopping-cart.png';
 
 const Header = () => {
@@ -11,7 +11,9 @@ const Header = () => {
 
 	return (
 		<HeaderWrap>
-			<NavLink to='/' end><p>Store</p></NavLink>
+			<LogoWrap>
+				<NavLink className="logo-link" to='/' end>Store</NavLink>
+			</LogoWrap>
 			<CartBadge>
 				<CartIcon src={ shoppingCart } className={clsx(cartCtx.items.length === 0 && 'empty-cart')} alt="Cart icon" />
 				<CartCount className={clsx(cartCtx.items.length === 0 && 'empty-cart')}>
