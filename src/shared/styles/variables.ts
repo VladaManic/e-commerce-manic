@@ -9,4 +9,7 @@ export const color = {
 	borderGray: '#cfcfcf',
 	borderGreen: '#46940d',
 	filterRed: '#b61a1a',
+	closeBorderGray: 'rgba(65,65,65,.15)',
+	closeGray: '#989898',
+	overlayGray: 'rgba(0, 0, 0, .7)',
 }

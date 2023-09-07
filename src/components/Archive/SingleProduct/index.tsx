@@ -4,10 +4,7 @@ import { NavLink } from 'react-router-dom';
 import makeExcerpt from '../../../helpers/makeExcerpt';
 import clsx from 'clsx';
 
-// Styles
 import { SingleWrap, CartBtn, ImgWrap, FeaturedImg, PriceParagraph, TitleWrap, DescriptionWrap, FilterBtn } from './style';
-
-// Types
 import { ProductObj } from '../../../types/interfaces';
 
 interface Props {
