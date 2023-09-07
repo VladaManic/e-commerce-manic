@@ -1,5 +1,6 @@
 import {useContext} from 'react';
 import ProductsContext from '../../../context/products-context';
+import ModalContext from '../../../context/modal-context';
 
 import CategoryBtn from '../CategoryBtn';
 
@@ -8,6 +9,7 @@ import {FilterArr} from '../../../types/interfaces';
 
 const FilterModal = () => {
 	const productsCtx = useContext(ProductsContext);
+	const modalCtx = useContext(ModalContext);
 	
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		e.preventDefault();
@@ -16,6 +18,7 @@ const FilterModal = () => {
 		productsCtx.getFilteredGroup(categoryName);
 		productsCtx.setCategoryName(categoryName);
 		productsCtx.setFilterSelected();
+		modalCtx.setIsOpen(false);
 	}
 
 	return (
