@@ -16,12 +16,17 @@ export const ModalWrap = styled.div`
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		width: 620px;
+		border-radius: 10px;
 		background-color: ${color.defaultWhite};
-		padding: 50px;
+		padding: 20px;
 		z-index: 1000;
 `;
 
 export const ButtonWrap = styled.button`
+		position: absolute;
+		top: 10px;
+		right: 10px;
 		width: 30px;
 		height: 30px;
 		border: 2px solid ${color.closeBorderGray};

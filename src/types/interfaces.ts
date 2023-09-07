@@ -13,3 +13,8 @@ export interface CartItem {
 	price: number,
 	total: number
 }
+
+export interface FilterArr {
+	id: number,
+	name: string,
+}

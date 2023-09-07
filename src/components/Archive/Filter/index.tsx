@@ -3,6 +3,7 @@ import ProductsContext from '../../../context/products-context';
 import clsx from 'clsx';
 
 import ModalWrapper from '../../../components/Modal/ModalWrapper';
+import FilterModal from '../../../components/Modal/FilterModal';
 
 import { FilterWrap, TextWrap, SelectedCategory, FilterBtn } from './style';
 
@@ -28,7 +29,7 @@ const Filter = () => {
 			<SelectedCategory>{productsCtx.category}</SelectedCategory>
 			<FilterBtn className={clsx(productsCtx.filterSelected ? 'filter-selected' : 'not-selected')} onClick={onClickHandler}>Change</FilterBtn>
 		</FilterWrap>
-		<ModalWrapper open={isOpen} onClose={() => setIsOpen(false)}>Modal</ModalWrapper>
+		<ModalWrapper open={isOpen} onClose={() => setIsOpen(false)}><FilterModal /></ModalWrapper>
 		</>
 	)
 }
