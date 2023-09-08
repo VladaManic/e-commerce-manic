@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useContext} from 'react';
 import ProductsContext from '../../../context/products-context';
 import CartContext from '../../../context/cart-context';
 
@@ -10,11 +10,6 @@ import { ProductObj, CartItem } from '../../../types/interfaces';
 const AllProducts = () => {
 	const productsCtx = useContext(ProductsContext);
 	const cartCtx = useContext(CartContext);
-
-	useEffect(() => {
-		localStorage.setItem('items', JSON.stringify(cartCtx.items));
-		console.log(cartCtx.items);
-	}, [cartCtx.items]);
 
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.id);
@@ -31,8 +26,10 @@ const AllProducts = () => {
 		} else {
 			newCartItems = [...cartCtx.items, {id: id, quantity: 1, price: price, total: price}]
 		}
+		localStorage.setItem('items', JSON.stringify(newCartItems));
 		cartCtx.setItems(newCartItems);
 		cartCtx.setAnimation();
+		console.log(localStorage["items"] ? JSON.parse(localStorage.getItem('items') || "") : []);
 	}
 
 	return (
