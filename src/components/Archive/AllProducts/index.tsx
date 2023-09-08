@@ -16,7 +16,7 @@ const AllProducts = () => {
 		console.log(cartCtx.items);
 	}, [cartCtx.items]);
 
-	const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.id);
 		const price = parseFloat(e.currentTarget.name);
 		let newCartItems;
@@ -35,7 +35,7 @@ const AllProducts = () => {
 	return (
 		<AllWrap>
 			{productsCtx.filteredGroup.map((singleProduct: ProductObj) => (
-				<SingleProduct key={singleProduct.id} single={singleProduct} onClickCart={onClickCartHandler} />
+				<SingleProduct key={singleProduct.id} single={singleProduct} onClickCart={onClickHandler} />
 			))}
 		</AllWrap>
 	)

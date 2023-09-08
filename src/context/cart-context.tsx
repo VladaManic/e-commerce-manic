@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import {createContext, useState} from 'react';
 
 import {CartItem} from '../types/interfaces';
 
@@ -16,6 +16,7 @@ export function CartContextProvider(props: any){
 	const [currentItems, setCurrentItems] = useState<any>(itemsStored);
 	const [currentAnimation, setCurrentAnimation] = useState<boolean>(false);
 
+	//Getting all products that are already set to cart
 	const getItemsHandler = () => {
 		return currentItems;
 	}
@@ -24,6 +25,7 @@ export function CartContextProvider(props: any){
 		setCurrentItems(data);
 	}
 
+	//Enabling animation after product added to cart for 2s
 	const setAnimationHandler = () => {
 		setCurrentAnimation(true);
 		setTimeout(() => {

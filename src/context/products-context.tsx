@@ -23,11 +23,13 @@ export function ProductsContextProvider(props: any){
 	const [currentCategory, setCurrentCategory] = useState<string>('All');
 	const [currentFilterSelected, setCurrentFilterSelected] = useState<boolean>(false);
 
+	//After fetching API data at very first render, setting whole data to context property object and setting default arhive page products display
 	const setDataHandler = (data: ProductObj[]) => {
 		setCurrentProducts(data);
 		setCurrentGroup(data);
 	}
 
+	//Making array with all unique categories for filter modal
 	const getAllCategoriesHandler = () => {
 		const categoryArray: string[] = [];
 		const finalArray: FilterArr[] = [];
@@ -39,19 +41,23 @@ export function ProductsContextProvider(props: any){
 		setCurrentCategories(finalArray);
 	}
 
+	//Choosen filter category name
 	const setCategoryNameHandler = (param: string) => {
 		setCurrentCategory(param);
 	}
 
+	//Filter btn changes state depending on if filter is choosen or reset 
 	const setFilterSelectedHandler = () => {
 		setCurrentFilterSelected(!currentFilterSelected);
 	}
 
+	//Getting all products with choosen category
 	const getFilteredGroupHandler = (param: string) => {
 		const newGroup = param !== 'All' ? currentProducts.filter((singleProduct: ProductObj) => singleProduct.category === param) : currentProducts;
 		setCurrentGroup(newGroup);
 	}
 
+	//Filtering all products with string simularity 
 	const getSearchHandler = (param: string) => {
 		const newGroup = param !== 'all' ? currentProducts.filter((singleProduct: ProductObj) => { return singleProduct.title.toLowerCase().includes(param)}) : currentProducts;
 		setCurrentGroup(newGroup);
