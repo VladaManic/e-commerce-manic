@@ -21,6 +21,7 @@ export function CartContextProvider(props: any){
 		return currentItems;
 	}
 
+	//Adding new cart items to local storage
 	const setItemsHandler = (data: CartItem[]) => {
 		setCurrentItems(data);
 	}

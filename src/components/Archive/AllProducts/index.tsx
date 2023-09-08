@@ -20,11 +20,14 @@ const AllProducts = () => {
 		const id = parseInt(e.currentTarget.id);
 		const price = parseFloat(e.currentTarget.name);
 		let newCartItems;
+		//Getting product with setelcted id
 		const setItem = cartCtx.items.filter((item: CartItem) => item.id === id);
+		//If product is added for the forst time
 		if(setItem.length > 0){
 			const newQuantity = setItem[0]['quantity'] + 1;
 			const totalPrice = setItem[0]['total'] + price;
-			newCartItems = cartCtx.items.map((item: CartItem) => item.id === id ? { ...item, quantity: newQuantity, price: price, total: totalPrice} : item)
+			newCartItems = cartCtx.items.map((item: CartItem) => item.id === id ? { ...item, quantity: newQuantity, price: price, total: totalPrice} : item);
+		//If product is added for the first time
 		} else {
 			newCartItems = [...cartCtx.items, {id: id, quantity: 1, price: price, total: price}]
 		}
