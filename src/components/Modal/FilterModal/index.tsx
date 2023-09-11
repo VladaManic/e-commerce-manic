@@ -5,7 +5,6 @@ import ModalContext from '../../../context/modal-context';
 import CategoryBtn from '../CategoryBtn';
 
 import {ModalWrap, TitleWrap, FiltersWrap} from './style'
-import {FilterArr} from '../../../types/interfaces';
 
 const FilterModal = () => {
 	const productsCtx = useContext(ProductsContext);
@@ -25,8 +24,8 @@ const FilterModal = () => {
 		<ModalWrap>
 			<TitleWrap>Filter by category</TitleWrap>
 			<FiltersWrap>
-				{productsCtx.allCategories.map((category: FilterArr) => (
-					<CategoryBtn key={category.id} category={category} onClick={onClickHandler} />
+				{productsCtx.allCategories.map((category: string, index: number) => (
+					<CategoryBtn key={index} category={category} onClick={onClickHandler} />
 				))}
 			</FiltersWrap>
 		</ModalWrap>

@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 
-import {ProductObj, FilterArr} from '../types/interfaces';
+import { ProductObj } from '../types/interfaces';
 
 const ProductsContext = createContext({
 	products: [],
@@ -9,7 +9,7 @@ const ProductsContext = createContext({
 	category: 'All',
 	filterSelected: false,
 	setData: (data: ProductObj[]) => {null},
-	getAllCategories: () => {null},
+	setAllCategories: (param: string[]) => {null},
 	getFilteredGroup: (param: string) => {null},
 	setCategoryName: (param: string) => {null},
 	setFilterSelected: () => {null},
@@ -29,16 +29,9 @@ export function ProductsContextProvider(props: any){
 		setCurrentGroup(data);
 	}
 
-	//Making array with all unique categories for filter modal
-	const getAllCategoriesHandler = () => {
-		const categoryArray: string[] = [];
-		const finalArray: FilterArr[] = [];
-		currentProducts.forEach((singleProduct: ProductObj) => {categoryArray.push(singleProduct.category)});
-		const uniqueArray = [... new Set(categoryArray)];
-		uniqueArray.forEach((category: string, index: number) => {
-			finalArray.push({'id': index, 'name': category});
-		})
-		setCurrentCategories(finalArray);
+	//Set all unique categories
+	const setAllCategoriesHandler = (param: string[]) => {
+		setCurrentCategories(param);
 	}
 
 	//Choosen filter category name
@@ -70,7 +63,7 @@ export function ProductsContextProvider(props: any){
 		category: currentCategory,
 		filterSelected: currentFilterSelected,
 		setData: setDataHandler,
-		getAllCategories: getAllCategoriesHandler,
+		setAllCategories: setAllCategoriesHandler,
 		getFilteredGroup: getFilteredGroupHandler,
 		setCategoryName: setCategoryNameHandler,
 		setFilterSelected: setFilterSelectedHandler,

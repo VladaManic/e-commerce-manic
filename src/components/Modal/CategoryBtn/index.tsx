@@ -1,14 +1,13 @@
-import {ButtonWrap} from './style'
-import {FilterArr} from '../../../types/interfaces';
+import { ButtonWrap } from './style'
 
 interface Props {
-	category: FilterArr;
+	category: string;
 	onClick: any;
 }
 
 const CategoryBtn = ({category, onClick} : Props) => {
 	return (
-		<ButtonWrap name={category.name} onClick={onClick}>{category.name}</ButtonWrap>
+		<ButtonWrap name={category} onClick={onClick}>{category}</ButtonWrap>
 	)
 }
 

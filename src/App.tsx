@@ -18,9 +18,15 @@ function App() {
   const fetchData = () => {
     fetch("https://fakestoreapi.com/products")
       .then(res=>res.json())
-      // .then(json=>console.log(json))
       .then((data) => {
 				productsCtx.setData(data);
+      })
+      .catch(error => handleError(error));
+
+    fetch("https://fakestoreapi.com/products/categories")
+      .then(res=>res.json())
+      .then((data) => {
+        productsCtx.setAllCategories(data);
       })
       .catch(error => handleError(error));
   };
