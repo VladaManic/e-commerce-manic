@@ -17,7 +17,7 @@ const AllProducts = () => {
 		let newCartItems;
 		//Getting product with setelcted id
 		const setItem = cartCtx.items.filter((item: CartItem) => item.id === id);
-		//If product is added for the forst time
+		//If product is already added
 		if(setItem.length > 0){
 			const newQuantity = setItem[0]['quantity'] + 1;
 			const totalPrice = setItem[0]['total'] + price;
