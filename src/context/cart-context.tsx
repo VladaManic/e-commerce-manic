@@ -12,7 +12,12 @@ const CartContext = createContext({
 
 export function CartContextProvider(props: any){
 	//localStorage.clear();
-	const itemsStored = localStorage["items"] ? JSON.parse(localStorage.getItem('items') || "") : [];
+	let itemsStored;
+	if(localStorage !== null && localStorage["items"] !== undefined){
+		itemsStored = JSON.parse(localStorage.getItem('items') || "");
+	} else {
+		itemsStored = [];
+	}
 	const [currentItems, setCurrentItems] = useState<any>(itemsStored);
 	const [currentAnimation, setCurrentAnimation] = useState<boolean>(false);
 

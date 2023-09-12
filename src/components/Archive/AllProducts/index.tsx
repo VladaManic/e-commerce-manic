@@ -26,10 +26,10 @@ const AllProducts = () => {
 		} else {
 			newCartItems = [...cartCtx.items, {id: id, quantity: 1, price: price, total: price}]
 		}
-		localStorage.setItem('items', JSON.stringify(newCartItems));
+		localStorage !== null && localStorage.setItem('items', JSON.stringify(newCartItems));
 		cartCtx.setItems(newCartItems);
 		cartCtx.setAnimation();
-		console.log(localStorage["items"] ? JSON.parse(localStorage.getItem('items') || "") : []);
+		console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);
 	}
 
 	return (
