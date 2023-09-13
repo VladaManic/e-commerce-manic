@@ -14,4 +14,5 @@ export const color = {
 	overlayGray: 'rgba(0, 0, 0, .7)',
 	cartGray: '#f0f0f0',
 	btnGray: 'hsla(0, 0%, 100%, .8)',
+	resetBlack: '#444',
 }

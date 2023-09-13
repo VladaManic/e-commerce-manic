@@ -5,7 +5,7 @@ import isStorageSupported from '../../../helpers/isStorageSupported';
 
 import CartProduct from '../CartProduct';
 
-import { ModalWrap, TitleWrap, ItemsWrap, TotalWrap } from './style';
+import { ModalWrap, TitleWrap, ItemsWrap, TotalWrap, ButtonsWrap, ResetBtn, BuyBtn } from './style';
 import { CartItem } from '../../../types/interfaces';
 
 const CartDisplay = () => {
@@ -24,6 +24,11 @@ const CartDisplay = () => {
 		//console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);
 	}
 
+	const onClickResetHandler = () => {
+		isStorageSupported("localStorage") ? localStorage.removeItem('items') : errorCtx.setLocalStorageError('No local storage is available!');
+		cartCtx.setItems([]);
+	}
+
 	return (
 		<ModalWrap>
 			<TitleWrap>Cart</TitleWrap>
@@ -33,6 +38,10 @@ const CartDisplay = () => {
 				))}
 			</ItemsWrap>
 			<TotalWrap>{cartCtx.total} $</TotalWrap>
+			<ButtonsWrap>
+				<ResetBtn onClick={onClickResetHandler}>Clear</ResetBtn>
+				<BuyBtn>Buy</BuyBtn>
+			</ButtonsWrap>
 		</ModalWrap>
 	)
 }
