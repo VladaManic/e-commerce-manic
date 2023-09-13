@@ -29,11 +29,7 @@ const AllProducts = () => {
 		} else {
 			newCartItems = [...cartCtx.items, {id: id, quantity: 1, price: price, total: price}]
 		}
-		if (!isStorageSupported("localStorage")) {
-			errorCtx.setLocalStorageError('No local storage is available!');
-		} else {
-			localStorage.setItem('items', JSON.stringify(newCartItems));
-		}
+		isStorageSupported("localStorage") ? localStorage.setItem('items', JSON.stringify(newCartItems)) : errorCtx.setLocalStorageError('No local storage is available!');
 		cartCtx.setItems(newCartItems);
 		cartCtx.setAnimation();
 		//console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);

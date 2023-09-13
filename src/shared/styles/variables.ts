@@ -12,4 +12,5 @@ export const color = {
 	closeBorderGray: 'rgba(65,65,65,.15)',
 	closeGray: '#989898',
 	overlayGray: 'rgba(0, 0, 0, .7)',
+	cartGray: '#f0f0f0',
 }

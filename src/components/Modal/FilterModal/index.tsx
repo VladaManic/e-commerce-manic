@@ -1,10 +1,10 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import ProductsContext from '../../../context/products-context';
 import ModalContext from '../../../context/modal-context';
 
 import CategoryBtn from '../CategoryBtn';
 
-import {ModalWrap, TitleWrap, FiltersWrap} from './style'
+import { ModalWrap, TitleWrap, FiltersWrap } from './style';
 
 const FilterModal = () => {
 	const productsCtx = useContext(ProductsContext);
