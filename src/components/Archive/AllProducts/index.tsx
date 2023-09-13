@@ -33,10 +33,14 @@ const AllProducts = () => {
 			errorCtx.setLocalStorageError('No local storage is available!');
 		} else {
 			try {
+				//Testing if localStorage is full
+				// let i = 0;
+				// for (i = 250; i <= 10000; i += 250) {
+        //   localStorage.setItem('test', new Array((i * 1024) + 1).join('a'));
+        // }
 				localStorage.setItem('items', JSON.stringify(newCartItems));
 			} catch (err) {
-				errorCtx.setLocalStorageError('Your local storage is full. We had to reset it.');
-				localStorage.clear();
+				errorCtx.setLocalStorageError('Your local storage is full. Please, reset it.');
 			}
 		}
 		cartCtx.setItems(newCartItems);
