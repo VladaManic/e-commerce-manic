@@ -1,4 +1,5 @@
-import {createContext, useState} from 'react';
+import { createContext, useState } from 'react';
+import isStorageSupported from '../helpers/isStorageSupported';
 
 import {CartItem} from '../types/interfaces';
 
@@ -13,10 +14,14 @@ const CartContext = createContext({
 export function CartContextProvider(props: any){
 	//localStorage.clear();
 	let itemsStored;
-	if(localStorage !== null && localStorage["items"] !== undefined){
-		itemsStored = JSON.parse(localStorage.getItem('items') || "");
-	} else {
+	if (!isStorageSupported("localStorage")) {
 		itemsStored = [];
+	} else {
+		try {
+			itemsStored = JSON.parse(localStorage.getItem('items') || "");
+		} catch (err) {
+			itemsStored = [];
+		}
 	}
 	const [currentItems, setCurrentItems] = useState<any>(itemsStored);
 	const [currentAnimation, setCurrentAnimation] = useState<boolean>(false);

@@ -1,6 +1,8 @@
 import {useContext} from 'react';
 import ProductsContext from '../../../context/products-context';
 import CartContext from '../../../context/cart-context';
+import ErrorContext from '../../../context/error-context';
+import isStorageSupported from '../../../helpers/isStorageSupported';
 
 import SingleProduct from '../SingleProduct';
 
@@ -10,6 +12,7 @@ import { ProductObj, CartItem } from '../../../types/interfaces';
 const AllProducts = () => {
 	const productsCtx = useContext(ProductsContext);
 	const cartCtx = useContext(CartContext);
+	const errorCtx = useContext(ErrorContext);
 
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.id);
@@ -26,7 +29,15 @@ const AllProducts = () => {
 		} else {
 			newCartItems = [...cartCtx.items, {id: id, quantity: 1, price: price, total: price}]
 		}
-		localStorage !== null && localStorage.setItem('items', JSON.stringify(newCartItems));
+		if (!isStorageSupported("localStorage")) {
+			errorCtx.setLocalStorageError('No local storage is available!');
+		} else {
+			try {
+				localStorage.setItem('items', JSON.stringify(newCartItems));
+			} catch (err) {
+				errorCtx.setLocalStorageError('Your local storage is full. Please, reset it.');
+			}
+		}
 		cartCtx.setItems(newCartItems);
 		cartCtx.setAnimation();
 		console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);

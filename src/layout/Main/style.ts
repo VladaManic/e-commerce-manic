@@ -6,6 +6,10 @@ export const MainWrap = styled.div`
    background-color: ${color.defaultBg};
 `;
 
+export const LocalStorageErrorWrap = styled.h2`
+   margin-bottom: 20px;
+`;
+
 export const ErrorWrap = styled.h2`
    
 `;
