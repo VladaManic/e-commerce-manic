@@ -1,8 +1,15 @@
-import React from 'react'
+import TopBar from '../../components/Archive/TopBar';
+import AllProducts from '../../components/Archive/AllProducts';
+
+// Styles
+import { ArchiveContent } from './style';
 
 const Archive = () => {
 	return (
-		<div>archive</div>
+		<ArchiveContent>
+			<TopBar />
+			<AllProducts />
+		</ArchiveContent>
 	)
 }
 

@@ -14,16 +14,17 @@ export default createGlobalStyle`
     body {
         height: 100%;
         font-size: 100%;
-    }
-
-    .main {
-        background-color: ${color.defaultBg};
+        font-family: 'Roboto', sans-serif;
     }
 
     h1,
     h2,
     p {
         margin: 0;
+    }
+
+    p {
+        font-size: 12px;
     }
 
     button {
@@ -36,6 +37,10 @@ export default createGlobalStyle`
     img {
         max-width: 100%;
         height: auto;
+    }
+
+    .default-link {
+        text-decoration: none;
     }
 `;
 
