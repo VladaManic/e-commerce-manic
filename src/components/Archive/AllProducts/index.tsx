@@ -35,7 +35,8 @@ const AllProducts = () => {
 			try {
 				localStorage.setItem('items', JSON.stringify(newCartItems));
 			} catch (err) {
-				errorCtx.setLocalStorageError('Your local storage is full. Please, reset it.');
+				errorCtx.setLocalStorageError('Your local storage is full. We had to reset it.');
+				localStorage.clear();
 			}
 		}
 		cartCtx.setItems(newCartItems);
