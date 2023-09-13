@@ -40,7 +40,7 @@ const AllProducts = () => {
 		}
 		cartCtx.setItems(newCartItems);
 		cartCtx.setAnimation();
-		console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);
+		//console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);
 	}
 
 	return (
