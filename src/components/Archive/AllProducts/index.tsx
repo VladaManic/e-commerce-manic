@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import ProductsContext from '../../../context/products-context';
 import CartContext from '../../../context/cart-context';
 import ErrorContext from '../../../context/error-context';
@@ -32,16 +32,7 @@ const AllProducts = () => {
 		if (!isStorageSupported("localStorage")) {
 			errorCtx.setLocalStorageError('No local storage is available!');
 		} else {
-			try {
-				//Testing if localStorage is full
-				// let i = 0;
-				// for (i = 250; i <= 10000; i += 250) {
-        //   localStorage.setItem('test', new Array((i * 1024) + 1).join('a'));
-        // }
-				localStorage.setItem('items', JSON.stringify(newCartItems));
-			} catch (err) {
-				errorCtx.setLocalStorageError('Your local storage is full. Please, reset it.');
-			}
+			localStorage.setItem('items', JSON.stringify(newCartItems));
 		}
 		cartCtx.setItems(newCartItems);
 		cartCtx.setAnimation();
