@@ -21,12 +21,10 @@ const CartProduct = ({cartItem, onClickClose}: Props) => {
 	const currentProduct = productsCtx.products.filter((singleProduct: ProductObj) => singleProduct.id === cartItem.id);
 
 	const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-		const id = parseInt(e.currentTarget.id);
 		const newValue = parseInt(e.currentTarget.value);
-		const price = parseFloat(e.currentTarget.name);
-		const totalPrice = price * newValue;
+		const totalPrice = cartItem.price * newValue;
 		setQuantity(newValue);
-		const newCartItems = cartCtx.items.map((item: CartItem) => item.id === id ? { ...item, quantity: newValue, price: price, total: totalPrice} : item);
+		const newCartItems = cartCtx.items.map((item: CartItem) => item.id === cartItem.id ? { ...item, quantity: newValue, price: cartItem.price, total: totalPrice} : item);
 		isStorageSupported("localStorage") ? localStorage.setItem('items', JSON.stringify(newCartItems)) : errorCtx.setLocalStorageError('No local storage is available!');
 		cartCtx.setItems(newCartItems);
 		//console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);
@@ -41,7 +39,7 @@ const CartProduct = ({cartItem, onClickClose}: Props) => {
 			<DataWrap>
 				<UpperWrap>
 					<TitleWrap>{currentProduct[0]['title']}</TitleWrap>
-					<input type="number" id={cartItem.id.toString()} name={cartItem.price.toString()} value={quantity} min="1" onChange={onChangeHandler} onKeyDown={(e) => {e.preventDefault();}} />
+					<input type="number" value={quantity} min="1" onChange={onChangeHandler} onKeyDown={(e) => {e.preventDefault();}} />
 				</UpperWrap>
 				<DownerWrap>
 					<PriceWrap>Price: {cartItem.price} $</PriceWrap>
