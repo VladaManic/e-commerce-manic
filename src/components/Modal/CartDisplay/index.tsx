@@ -16,6 +16,7 @@ const CartDisplay = () => {
     cartCtx.getTotal();
   }, [cartCtx.items]);
 
+	//On click X to remove one cart item
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
 		const id = parseInt(e.currentTarget.name);
 		const removedItems = (cartCtx.items.filter((item: CartItem) => item.id !== id));
@@ -24,6 +25,7 @@ const CartDisplay = () => {
 		//console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);
 	}
 
+	//On click Clear btn to remove all from cart
 	const onClickResetHandler = () => {
 		isStorageSupported("localStorage") ? localStorage.removeItem('items') : errorCtx.setLocalStorageError('No local storage is available!');
 		cartCtx.setItems([]);

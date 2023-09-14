@@ -1,7 +1,6 @@
 import TopBar from '../../components/Archive/TopBar';
 import AllProducts from '../../components/Archive/AllProducts';
 
-// Styles
 import { ArchiveContent } from './style';
 
 const Archive = () => {

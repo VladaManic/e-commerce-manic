@@ -41,7 +41,7 @@ const CartProduct = ({cartItem, onClickClose}: Props) => {
 			<DataWrap>
 				<UpperWrap>
 					<TitleWrap>{currentProduct[0]['title']}</TitleWrap>
-					<input type="number" id={cartItem.id.toString()} name={cartItem.price.toString()} value={quantity} min="1" onChange={onChangeHandler} />
+					<input type="number" id={cartItem.id.toString()} name={cartItem.price.toString()} value={quantity} min="1" onChange={onChangeHandler} onKeyDown={(e) => {e.preventDefault();}} />
 				</UpperWrap>
 				<DownerWrap>
 					<PriceWrap>Price: {cartItem.price} $</PriceWrap>

@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import ProductsContext from '../../../context/products-context';
 import ModalContext from '../../../context/modal-context';
 import clsx from 'clsx';

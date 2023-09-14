@@ -1,8 +1,7 @@
-import {useContext, useRef} from 'react';
+import { useContext, useRef } from 'react';
 import ProductsContext from '../../../context/products-context';
 import clsx from 'clsx';
 
-// Styles
 import { InputWrap, XIcon } from './style';
 
 const SearchInput = () => {
@@ -10,11 +9,13 @@ const SearchInput = () => {
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const refLength = inputRef.current?.value.length;
 
+	//Typing characters in input field
 	const keyUpHandler = (e: React.FormEvent<HTMLInputElement>) => {
 		const input: HTMLInputElement = e.currentTarget;
 		productsCtx.getSearch(input.value.toLowerCase())
 	}
 
+	//On click X to reset search input
 	const onClickHandler = () => {
 		productsCtx.getSearch('all');
 		if(inputRef.current !== null) {

@@ -1,6 +1,6 @@
-import {useContext} from 'react';
-import ProductsContext from '../../../context/products-context';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import ProductsContext from '../../../context/products-context';
 import makeExcerpt from '../../../helpers/makeExcerpt';
 import clsx from 'clsx';
 
