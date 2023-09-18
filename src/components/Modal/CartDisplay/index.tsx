@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import CartContext from '../../../context/cart-context';
 import ErrorContext from '../../../context/error-context';
 import isStorageSupported from '../../../helpers/isStorageSupported';
@@ -11,10 +11,6 @@ import { CartItem } from '../../../types/interfaces';
 const CartDisplay = () => {
 	const cartCtx = useContext(CartContext);
 	const errorCtx = useContext(ErrorContext);
-
-	useEffect(() => {
-    cartCtx.getTotal();
-  }, [cartCtx.items]);
 
 	//On click X to remove one cart item
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {

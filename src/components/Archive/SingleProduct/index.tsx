@@ -15,12 +15,9 @@ interface Props {
 const SingleProduct = ({single, onClickCart}: Props) => {
 	const productsCtx = useContext(ProductsContext);
 
-	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		const button: HTMLButtonElement = e.currentTarget;
-		const categoryName = button.name;
-		productsCtx.getFilteredGroup(categoryName);
-		productsCtx.setCategoryName(categoryName);
+	const onClickHandler = () => {
+		productsCtx.getFilteredGroup(single.category);
+		productsCtx.setCategoryName(single.category);
 		productsCtx.setFilterSelected();
 	}
 

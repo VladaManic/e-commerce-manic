@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import isStorageSupported from '../helpers/isStorageSupported';
 
 import { CartItem } from '../types/interfaces';
@@ -10,7 +10,6 @@ const CartContext = createContext({
 	getItems: () => {null},
 	setItems: (data: CartItem[]) => {null},
 	setAnimation: () => {null},
-	getTotal: () => {null},
 });
 
 export function CartContextProvider(props: any){
@@ -28,6 +27,17 @@ export function CartContextProvider(props: any){
 	const [currentItems, setCurrentItems] = useState<any>(itemsStored);
 	const [currentAnimation, setCurrentAnimation] = useState<boolean>(false);
 	const [currentTotal, setCurrentTotal] = useState<number>(0);
+
+	useEffect(() => {
+		//Set total price on every change of cart items
+    let totalValue = 0;
+		currentItems.forEach((item: CartItem) => {
+			totalValue = totalValue + item['total'];
+		})
+		//Round on 2 decimals
+		const roundedValue = totalValue.toFixed(2);
+		setCurrentTotal(parseFloat(roundedValue));
+  }, [currentItems]);
 
 	//Getting all products that are already set to cart
 	const getItemsHandler = () => {
@@ -47,17 +57,6 @@ export function CartContextProvider(props: any){
 		}, 2000);
 	}
 
-	//Getting total price for all items on cart
-	const getTotalHandler = () => {
-		let totalValue = 0;
-		currentItems.forEach((item: CartItem) => {
-			totalValue = totalValue + item['total'];
-		})
-		//Round on 2 decimals
-		const roundedValue = totalValue.toFixed(2);
-		setCurrentTotal(parseFloat(roundedValue));
-	}
-
 	const context = {
 		items: currentItems,
 		animationBoolean: currentAnimation,
@@ -65,7 +64,6 @@ export function CartContextProvider(props: any){
 		getItems: getItemsHandler,
 		setItems: setItemsHandler,
 		setAnimation: setAnimationHandler,
-		getTotal: getTotalHandler,
 	} 
 
 	return (
