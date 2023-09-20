@@ -12,8 +12,7 @@ const Header = () => {
 	const modalCtx = useContext(ModalContext);
 
 	const onClickHandler = () => {
-		modalCtx.setModalType(false);
-		modalCtx.setIsOpen(true);
+		modalCtx.setOpenCart(true);
 	}
 
 	return (

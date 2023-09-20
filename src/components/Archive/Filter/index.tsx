@@ -16,8 +16,7 @@ const Filter = () => {
 			productsCtx.setCategoryName('All');
 			productsCtx.setFilterSelected(false);
 		} else {
-			modalCtx.setModalType(true);
-			modalCtx.setIsOpen(true);
+			modalCtx.setOpenFilter(true);
 		}
 	} 
 

@@ -17,7 +17,7 @@ const FilterModal = () => {
 		productsCtx.getFilteredGroup(categoryName);
 		productsCtx.setCategoryName(categoryName);
 		productsCtx.setFilterSelected(true);
-		modalCtx.setIsOpen(false);
+		modalCtx.setOpenFilter(false);
 	}
 
 	return (

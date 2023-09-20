@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ErrorContext from '../../context/error-context';
 import ModalContext from '../../context/modal-context';
@@ -26,9 +26,9 @@ const Main = () => {
 					</Routes>
 				}
 			</MainWrap>
-			<ModalWrapper open={modalCtx.isOpen} onClose={() => modalCtx.setIsOpen(false)}>{ modalCtx.modalType ? <FilterModal /> : <CartModal />}</ModalWrapper>
+			{ modalCtx.openCart && <ModalWrapper onClose={() => modalCtx.setOpenCart(false)}><CartModal /></ModalWrapper> }
+			{ modalCtx.openFilter && <ModalWrapper onClose={() => modalCtx.setOpenFilter(false)}><FilterModal /></ModalWrapper> }
 		</>
-		
 	)
 }
 
