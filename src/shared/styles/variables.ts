@@ -1,5 +1,7 @@
 export const color = {
 	defaultBg: '#f0f2f5',
+	headerWhite: '#f8fcfc',
+	shadowGray: 'rgb(32 33 36/17%)',
 	defaultWhite: '#fff',
 	defaultBlack: '#000',
 	cartOrange: '#FFA500',
@@ -15,4 +17,5 @@ export const color = {
 	cartGray: '#f0f0f0',
 	btnGray: 'hsla(0, 0%, 100%, .8)',
 	resetBlack: '#444',
+	categoryBlack: '414141',
 }

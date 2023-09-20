@@ -13,6 +13,7 @@ export default createGlobalStyle`
 
     body {
         height: 100%;
+        background-color: ${color.defaultBg};
         font-size: 100%;
         font-family: 'Roboto', sans-serif;
     }

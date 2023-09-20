@@ -14,7 +14,7 @@ const Filter = () => {
 		if(button.classList.contains('filter-selected')){
 			productsCtx.getFilteredGroup('All');
 			productsCtx.setCategoryName('All');
-			productsCtx.setFilterSelected();
+			productsCtx.setFilterSelected(false);
 		} else {
 			modalCtx.setModalType(true);
 			modalCtx.setIsOpen(true);

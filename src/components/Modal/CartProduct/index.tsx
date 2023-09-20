@@ -27,7 +27,6 @@ const CartProduct = ({cartItem, onClickClose}: Props) => {
 		const newCartItems = cartCtx.items.map((item: CartItem) => item.id === cartItem.id ? { ...item, quantity: newValue, price: cartItem.price, total: totalPrice} : item);
 		isStorageSupported("localStorage") ? localStorage.setItem('items', JSON.stringify(newCartItems)) : errorCtx.setLocalStorageError('No local storage is available!');
 		cartCtx.setItems(newCartItems);
-		//console.log(localStorage !== null ? JSON.parse(localStorage.getItem('items') || "") : []);
 	}
 
 	return (

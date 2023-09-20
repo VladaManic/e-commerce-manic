@@ -12,12 +12,14 @@ const SearchInput = () => {
 	//Typing characters in input field
 	const keyUpHandler = (e: React.FormEvent<HTMLInputElement>) => {
 		const input: HTMLInputElement = e.currentTarget;
-		productsCtx.getSearch(input.value.toLowerCase())
+		productsCtx.getSearch(input.value.toLowerCase());
+		productsCtx.setSearchString(input.value.toLowerCase());
 	}
 
 	//On click X to reset search input
 	const onClickHandler = () => {
-		productsCtx.getSearch('all');
+		productsCtx.getSearch('');
+		productsCtx.setSearchString('');
 		if(inputRef.current !== null) {
 			inputRef.current.value = "";
 		}
