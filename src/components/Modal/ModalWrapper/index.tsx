@@ -1,5 +1,5 @@
+import { useContext } from 'react';
 import ReactDom from 'react-dom';
-import {useContext} from 'react';
 import ModalContext from '../../../context/modal-context';
 
 import { ModalWrap, Overlay, ButtonWrap } from './style';

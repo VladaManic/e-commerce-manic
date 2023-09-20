@@ -1,8 +1,16 @@
-import React from 'react'
+import { useContext } from 'react';
+import CartContext from '../../../context/cart-context';
+
+import CartEmpty from '../CartEmpty';
+import CartDisplay from '../CartDisplay';
 
 const CartModal = () => {
+	const cartCtx = useContext(CartContext);
+
 	return (
-		<div>CartModal</div>
+		<>
+			{ cartCtx.items.length === 0 ? <CartEmpty /> : <CartDisplay /> }
+		</>
 	)
 }
 

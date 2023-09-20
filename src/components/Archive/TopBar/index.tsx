@@ -1,7 +1,6 @@
 import SearchInput from '../SearchInput';
 import Filter from '../Filter';
 
-// Styles
 import { TopBarWrap } from './style';
 
 const TopBar = () => {

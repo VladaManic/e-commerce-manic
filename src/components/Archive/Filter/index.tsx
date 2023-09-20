@@ -1,10 +1,7 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import ProductsContext from '../../../context/products-context';
 import ModalContext from '../../../context/modal-context';
 import clsx from 'clsx';
-
-import ModalWrapper from '../../../components/Modal/ModalWrapper';
-import FilterModal from '../../../components/Modal/FilterModal';
 
 import { FilterWrap, TextWrap, SelectedCategory, FilterBtn } from './style';
 
@@ -19,19 +16,17 @@ const Filter = () => {
 			productsCtx.setCategoryName('All');
 			productsCtx.setFilterSelected();
 		} else {
+			modalCtx.setModalType(true);
 			modalCtx.setIsOpen(true);
 		}
 	} 
 
 	return (
-		<>
-			<FilterWrap>
-				<TextWrap>Category:</TextWrap>
-				<SelectedCategory>{productsCtx.category}</SelectedCategory>
-				<FilterBtn className={clsx(productsCtx.filterSelected ? 'filter-selected' : 'not-selected')} onClick={onClickHandler}>Change</FilterBtn>
-			</FilterWrap>
-			<ModalWrapper open={modalCtx.isOpen} onClose={() => modalCtx.setIsOpen(false)}><FilterModal /></ModalWrapper>
-		</>
+		<FilterWrap>
+			<TextWrap>Category:</TextWrap>
+			<SelectedCategory>{productsCtx.category}</SelectedCategory>
+			<FilterBtn className={clsx(productsCtx.filterSelected ? 'filter-selected' : 'not-selected')} onClick={onClickHandler}>Change</FilterBtn>
+		</FilterWrap>
 	)
 }
 

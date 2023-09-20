@@ -1,6 +1,7 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import CartContext from '../../context/cart-context';
+import ModalContext from '../../context/modal-context';
 import clsx from 'clsx';
 
 import { HeaderWrap, LogoWrap, CartBadge, CartIcon, CartCount, CartNumber, AnimationWrap, CartAnimation } from './style';
@@ -8,6 +9,12 @@ import shoppingCart from '../../assets/img/shopping-cart.png';
 
 const Header = () => {
 	const cartCtx = useContext(CartContext);
+	const modalCtx = useContext(ModalContext);
+
+	const onClickHandler = () => {
+		modalCtx.setModalType(false);
+		modalCtx.setIsOpen(true);
+	}
 
 	return (
 		<HeaderWrap>
@@ -15,7 +22,7 @@ const Header = () => {
 				<NavLink className="logo-link" to='/' end>Store</NavLink>
 			</LogoWrap>
 			<CartBadge>
-				<CartIcon src={ shoppingCart } className={clsx(cartCtx.items.length === 0 && 'empty-cart')} alt="Cart icon" />
+				<CartIcon src={ shoppingCart } className={clsx(cartCtx.items.length === 0 && 'empty-cart')} alt="Cart icon" onClick={onClickHandler} />
 				<CartCount className={clsx(cartCtx.items.length === 0 && 'empty-cart')}>
 					<CartNumber>{cartCtx.items.length !== 0 && cartCtx.items.length}</CartNumber>
 				</CartCount>

@@ -1,4 +1,4 @@
-import styled, {  } from 'styled-components';
+import styled from 'styled-components';
 import { color } from '../../shared/styles/variables';
 
 export const HeaderWrap = styled.div`
@@ -30,6 +30,7 @@ export const CartBadge = styled.div`
 export const CartIcon = styled.img`
     width: 50px;
     z-index; 2;
+    cursor: pointer;
 
     &.empty-cart {
       filter: grayscale(1);
