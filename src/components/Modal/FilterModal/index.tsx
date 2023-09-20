@@ -16,7 +16,7 @@ const FilterModal = () => {
 		const categoryName = button.name;
 		productsCtx.getFilteredGroup(categoryName);
 		productsCtx.setCategoryName(categoryName);
-		productsCtx.setFilterSelected();
+		productsCtx.setFilterSelected(true);
 		modalCtx.setIsOpen(false);
 	}
 

@@ -5,6 +5,8 @@ export const HeaderWrap = styled.div`
     display: flex;
 		justify-content: space-between;
     padding: 10px;
+    background-color: ${color.headerWhite};
+    box-shadow: 0 1px 6px 0 ${color.shadowGray};
 `;
 
 export const LogoWrap = styled.div`
@@ -25,6 +27,7 @@ export const CartBadge = styled.div`
     display: flex;
     justify-content: flex-end;
     width: 200px;
+    z-index: 2;
 `;
 
 export const CartIcon = styled.img`

@@ -18,7 +18,7 @@ const SingleProduct = ({single, onClickCart}: Props) => {
 	const onClickHandler = () => {
 		productsCtx.getFilteredGroup(single.category);
 		productsCtx.setCategoryName(single.category);
-		productsCtx.setFilterSelected();
+		productsCtx.setFilterSelected(true);
 	}
 
 	return (
