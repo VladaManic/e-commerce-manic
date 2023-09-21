@@ -14,7 +14,10 @@ import { MainWrap, LocalStorageErrorWrap, ErrorWrap } from './style';
 const Main = () => {
 	const errorCtx = useContext(ErrorContext);
 	const modalCtx = useContext(ModalContext);
+	//3 random default values for states
 	const [closeCondition, setCloseCondition] = useState<boolean>(true);
+	const [cartModalLocation, setCartModalLocation] = useState<string>('');
+	const [filterModalLocation, setFilterModalLocation] = useState<string>('root');
 	
 	return (
 		<>
@@ -27,8 +30,8 @@ const Main = () => {
 					</Routes>
 				}
 			</MainWrap>
-			{ modalCtx.openCart && <ModalWrapper closeCondition={closeCondition} onClose={() => modalCtx.setOpenCart(false)}><CartModal /></ModalWrapper> }
-			{ modalCtx.openFilter && <ModalWrapper closeCondition={closeCondition} onClose={() => modalCtx.setOpenFilter(false)}><FilterModal /></ModalWrapper> }
+			{ modalCtx.openCart && <ModalWrapper wrapperId={cartModalLocation} closeCondition={closeCondition} onClose={() => modalCtx.setOpenCart(false)}><CartModal /></ModalWrapper> }
+			{ modalCtx.openFilter && <ModalWrapper wrapperId={filterModalLocation} closeCondition={closeCondition} onClose={() => modalCtx.setOpenFilter(false)}><FilterModal /></ModalWrapper> }
 		</>
 	)
 }

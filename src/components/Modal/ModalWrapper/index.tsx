@@ -6,16 +6,26 @@ import { ModalWrap, Overlay, ButtonWrap } from './style';
 
 interface Props {
 	children: any;
-	onClose: any;
+	wrapperId: string;
 	closeCondition: boolean;
+	onClose: any;
 }
 
-const ModalWrapper = ({children, onClose, closeCondition }: Props) => {
+const ModalWrapper = ({children, wrapperId, closeCondition, onClose}: Props) => {
 	const modalCtx = useContext(ModalContext);
+	let elementAppend = document.getElementById(wrapperId);
+
+	if (!elementAppend) {
+    elementAppend = document.body;
+  }
 
 	const onClickHandler = () => {
 		if(closeCondition){
-			modalCtx.openFilter ? modalCtx.setOpenFilter(false) : modalCtx.setOpenCart(false);
+			if(modalCtx.openFilter){
+				modalCtx.setOpenFilter(false)
+			} else if (modalCtx.openCart) {
+				modalCtx.setOpenCart(false);
+			}
 		}
 	}
 
@@ -27,7 +37,7 @@ const ModalWrapper = ({children, onClose, closeCondition }: Props) => {
 				{children}
 			</ModalWrap>
 		</>,
-    document.body
+    elementAppend
   )
 }
 
