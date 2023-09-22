@@ -16,8 +16,8 @@ const Main = () => {
 	const modalCtx = useContext(ModalContext);
 	//3 random default values for states
 	const [closeCondition, setCloseCondition] = useState<boolean>(true);
-	const [cartModalLocation, setCartModalLocation] = useState<string>('');
-	const [filterModalLocation, setFilterModalLocation] = useState<string>('root');
+	const [cartModalLocation, setCartModalLocation] = useState<HTMLElement | null>();
+	const [filterModalLocation, setFilterModalLocation] = useState<HTMLElement | null>(document.getElementById('root'));
 	
 	return (
 		<>
@@ -30,8 +30,8 @@ const Main = () => {
 					</Routes>
 				}
 			</MainWrap>
-			{ modalCtx.openCart && <ModalWrapper wrapperId={cartModalLocation} closeCondition={closeCondition} onClose={() => modalCtx.setOpenCart(false)}><CartModal /></ModalWrapper> }
-			{ modalCtx.openFilter && <ModalWrapper wrapperId={filterModalLocation} closeCondition={closeCondition} onClose={() => modalCtx.setOpenFilter(false)}><FilterModal /></ModalWrapper> }
+			{ modalCtx.openCart && <ModalWrapper elementAppend={cartModalLocation} closeCondition={closeCondition} onClose={() => modalCtx.setOpenCart(false)}><CartModal /></ModalWrapper> }
+			{ modalCtx.openFilter && <ModalWrapper elementAppend={filterModalLocation} closeCondition={closeCondition} onClose={() => modalCtx.setOpenFilter(false)}><FilterModal /></ModalWrapper> }
 		</>
 	)
 }

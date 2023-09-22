@@ -6,18 +6,13 @@ import { ModalWrap, Overlay, ButtonWrap } from './style';
 
 interface Props {
 	children: any;
-	wrapperId: string;
 	closeCondition: boolean;
 	onClose: any;
+	elementAppend: HTMLElement | null | undefined;
 }
 
-const ModalWrapper = ({children, wrapperId, closeCondition, onClose}: Props) => {
+const ModalWrapper = ({children, closeCondition, onClose, elementAppend = document.body}: Props) => {
 	const modalCtx = useContext(ModalContext);
-	let elementAppend = document.getElementById(wrapperId);
-
-	if (!elementAppend) {
-    elementAppend = document.body;
-  }
 
 	const onClickHandler = () => {
 		if(closeCondition){
@@ -37,7 +32,7 @@ const ModalWrapper = ({children, wrapperId, closeCondition, onClose}: Props) => 
 				{children}
 			</ModalWrap>
 		</>,
-    elementAppend
+    elementAppend!
   )
 }
 
