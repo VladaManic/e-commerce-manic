@@ -12,9 +12,9 @@ function App() {
   const errorCtx = useContext(ErrorContext);
   const productsCtx = useContext(ProductsContext);
 
-  const handleError = async (error: any) => {
+  const handleError = (error: any) => {
     errorCtx.setError(error.message)
-    await console.log(error.message);
+    console.log(error.message);
   }
 
   const fetchData = () => {
