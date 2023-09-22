@@ -12,7 +12,7 @@ function App() {
   const errorCtx = useContext(ErrorContext);
   const productsCtx = useContext(ProductsContext);
 
-  const handleError = (error: any) => {
+  const handleError = (error: ReferenceError) => {
     errorCtx.setError(error.message)
     console.log(error.message);
   }

@@ -12,7 +12,7 @@ import { ProductObj, CartItem } from '../../../types/interfaces';
 
 interface Props {
 	cartItem: CartItem;
-	onClickClose: any;
+	onClickClose: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const CartProduct = ({cartItem, onClickClose}: Props) => {

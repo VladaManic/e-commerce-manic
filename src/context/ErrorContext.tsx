@@ -7,6 +7,7 @@ const ErrorContext = createContext({
 	setLocalStorageError: (param: string) => {null},
 });
 
+//export const ErrorContextProvider =({ children }: PropsWithChildren<object>) => {
 export function ErrorContextProvider(props: any){
 	const [currentError, setCurrentError] = useState<string>('');
 	const [currentLocalStorageError, setCurrentLocalStorageError] = useState<string>('');

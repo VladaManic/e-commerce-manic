@@ -5,9 +5,9 @@ import ModalContext from '../../../context/ModalContext';
 import { ModalWrap, Overlay, ButtonWrap } from './style';
 
 interface Props {
-	children: any;
+	children: JSX.Element;
 	closeCondition: boolean;
-	onClose: any;
+	onClose: React.MouseEventHandler<HTMLButtonElement>;
 	elementAppend: HTMLElement | null | undefined;
 }
 

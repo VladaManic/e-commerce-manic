@@ -12,7 +12,7 @@ import { ProductObj } from '../../../types/interfaces';
 
 interface Props {
 	single: ProductObj;
-	onClickCart: any;
+	onClickCart: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const SingleProduct = ({single, onClickCart}: Props) => {

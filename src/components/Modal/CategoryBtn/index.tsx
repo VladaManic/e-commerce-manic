@@ -2,7 +2,7 @@ import { ButtonWrap } from './style'
 
 interface Props {
 	category: string;
-	onClick: any;
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const CategoryBtn = ({category, onClick} : Props) => {
