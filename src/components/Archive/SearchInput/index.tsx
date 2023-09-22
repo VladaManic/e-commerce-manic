@@ -1,5 +1,5 @@
 import { useContext, useRef } from 'react';
-import ProductsContext from '../../../context/products-context';
+import ProductsContext from '../../../context/ProductsContext';
 import clsx from 'clsx';
 
 import { InputWrap, XIcon } from './style';

@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
-import ProductsContext from '../../../context/products-context';
-import CartContext from '../../../context/cart-context';
-import ErrorContext from '../../../context/error-context';
+import ProductsContext from '../../../context/ProductsContext';
+import CartContext from '../../../context/CartContext';
+import ErrorContext from '../../../context/ErrorContext';
 import isStorageSupported from '../../../helpers/isStorageSupported';
 import clsx from 'clsx';
 

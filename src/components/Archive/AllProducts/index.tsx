@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import LoadingContext from '../../../context/loading-context';
-import ProductsContext from '../../../context/products-context';
-import CartContext from '../../../context/cart-context';
-import ErrorContext from '../../../context/error-context';
+import LoadingContext from '../../../context/LoadingContext';
+import ProductsContext from '../../../context/ProductsContext';
+import CartContext from '../../../context/CartContext';
+import ErrorContext from '../../../context/ErrorContext';
 import isStorageSupported from '../../../helpers/isStorageSupported';
 
 import Loader from '../../../layout/Loader';

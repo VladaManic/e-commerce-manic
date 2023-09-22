@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import ErrorContext from '../../context/error-context';
-import ModalContext from '../../context/modal-context';
+import ErrorContext from '../../context/ErrorContext';
+import ModalContext from '../../context/ModalContext';
 
 import Archive from '../../pages/Archive';
 import Single from '../../pages/Single';

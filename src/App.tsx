@@ -1,8 +1,8 @@
 import {useEffect, useContext} from 'react';
 import GeneralStyles from './shared/styles/GeneralStyles';
-import LoadingContext from './context/loading-context';
-import ErrorContext from './context/error-context';
-import ProductsContext from './context/products-context';
+import LoadingContext from './context/LoadingContext';
+import ErrorContext from './context/ErrorContext';
+import ProductsContext from './context/ProductsContext';
 
 import Header from './layout/Header';
 import Main from './layout/Main';

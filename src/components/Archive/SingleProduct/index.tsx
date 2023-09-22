@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LoadingContext from '../../../context/loading-context';
-import ProductsContext from '../../../context/products-context';
+import LoadingContext from '../../../context/LoadingContext';
+import ProductsContext from '../../../context/ProductsContext';
 import makeExcerpt from '../../../helpers/makeExcerpt';
 import clsx from 'clsx';
 
