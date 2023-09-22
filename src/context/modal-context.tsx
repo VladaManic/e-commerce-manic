@@ -1,29 +1,29 @@
 import { createContext, useState } from 'react';
 
 const ModalContext = createContext({
-	isOpen: false,
-	modalType: true,
-	setIsOpen: (param: boolean) => {null},
-	setModalType: (param: boolean) => {null},
+	openFilter: false,
+	openCart: false,
+	setOpenFilter: (param: boolean) => {null},
+	setOpenCart: (param: boolean) => {null},
 });
 
 export function ModalContextProvider(props: any){
-	const [currentIsOpen, setCurrentIsOpen] = useState<boolean>(false);
-	const [currentModalType, setCurrentModalType] = useState<boolean>(true);
+	const [currentOpenFilter, setCurrentOpenFilter] = useState<boolean>(false);
+	const [currentOpenCart, setCurrentOpenCart] = useState<boolean>(false);
 
-	const setIsOpenHandler = (param: boolean) => {
-		setCurrentIsOpen(param);
+	const setOpenFilter = (param: boolean) => {
+		setCurrentOpenFilter(param);
 	}
 
-	const setModalTypeHandler = (param: boolean) => {
-		setCurrentModalType(param);
+	const setOpenCart = (param: boolean) => {
+		setCurrentOpenCart(param);
 	}
 
 	const context = {
-		isOpen: currentIsOpen,
-		modalType: currentModalType,
-		setIsOpen: setIsOpenHandler,
-		setModalType: setModalTypeHandler, 
+		openFilter: currentOpenFilter,
+		openCart: currentOpenCart,
+		setOpenFilter: setCurrentOpenFilter,
+		setOpenCart: setCurrentOpenCart,
 	} 
 
 	return (

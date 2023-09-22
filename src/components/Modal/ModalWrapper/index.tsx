@@ -5,18 +5,23 @@ import ModalContext from '../../../context/modal-context';
 import { ModalWrap, Overlay, ButtonWrap } from './style';
 
 interface Props {
-	open: boolean;
 	children: any;
+	closeCondition: boolean;
 	onClose: any;
+	elementAppend: HTMLElement | null | undefined;
 }
 
-const ModalWrapper = ({ open, children, onClose }: Props) => {
+const ModalWrapper = ({children, closeCondition, onClose, elementAppend = document.body}: Props) => {
 	const modalCtx = useContext(ModalContext);
 
-	if (!open) return null;
-
 	const onClickHandler = () => {
-		modalCtx.setIsOpen(false);
+		if(closeCondition){
+			if(modalCtx.openFilter){
+				modalCtx.setOpenFilter(false)
+			} else if (modalCtx.openCart) {
+				modalCtx.setOpenCart(false);
+			}
+		}
 	}
 
 	return ReactDom.createPortal(
@@ -27,7 +32,7 @@ const ModalWrapper = ({ open, children, onClose }: Props) => {
 				{children}
 			</ModalWrap>
 		</>,
-    document.body
+    elementAppend!
   )
 }
 
