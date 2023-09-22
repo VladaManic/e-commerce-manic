@@ -1,5 +1,6 @@
 import {useEffect, useContext} from 'react';
 import GeneralStyles from './shared/styles/GeneralStyles';
+import LoadingContext from './context/loading-context';
 import ErrorContext from './context/error-context';
 import ProductsContext from './context/products-context';
 
@@ -7,6 +8,7 @@ import Header from './layout/Header';
 import Main from './layout/Main';
 
 function App() {
+  const loadingCtx = useContext(LoadingContext);
   const errorCtx = useContext(ErrorContext);
   const productsCtx = useContext(ProductsContext);
 
@@ -20,6 +22,7 @@ function App() {
       .then(res=>res.json())
       .then((data) => {
 				productsCtx.setData(data);
+        loadingCtx.setLoading(false);
       })
       .catch(error => handleError(error));
 

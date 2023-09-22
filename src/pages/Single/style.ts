@@ -1,12 +1,22 @@
 import styled from 'styled-components';
 import { color } from '../../shared/styles/variables';
 
+export const LoaderWrap = styled.div`
+	 &.hide {
+		display: none;
+	 }
+`;
+
 export const SingleWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 65%;
 	margin-right: auto;
 	margin-left: auto;
+
+	&.hide {
+		display: none;
+	}
 `;
 
 export const ImageWrap = styled.div`

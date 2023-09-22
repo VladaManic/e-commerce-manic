@@ -17,5 +17,7 @@ export const color = {
 	cartGray: '#f0f0f0',
 	btnGray: 'hsla(0, 0%, 100%, .8)',
 	resetBlack: '#444',
-	categoryBlack: '414141',
+	categoryBlack: '#414141',
+	loaderTransparent: '#F3F3F3',
+	loaderBlue: '#87ace8',
 }

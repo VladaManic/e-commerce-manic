@@ -8,6 +8,10 @@ export const SingleWrap = styled.div`
 	padding: 10px;
 	border-radius: 5px;
 	background-color: ${color.cartGray};
+
+	&.hide {
+		display: none;
+	}
 `;
 
 export const CloseBtn = styled.button`
@@ -20,6 +24,23 @@ export const CloseBtn = styled.button`
 	border: 1px solid ${color.filterRed};
 	border-radius: 25px;
 	background-color: ${color.btnGray};
+`;
+
+export const LoaderWrap = styled.div`
+   margin: auto;
+	 margin-bottom: 20px;
+
+   .loader-inner {
+			width: 30px !important;
+			height: 30px !important;
+      border: 6px solid ${color.defaultWhite};
+      border-top: 6px solid ${color.loaderBlue};
+      border-right: 6px solid ${color.loaderBlue};
+   }
+
+	 &.hide {
+		display: none;
+	 }
 `;
 
 export const ImgWrap = styled.div`
