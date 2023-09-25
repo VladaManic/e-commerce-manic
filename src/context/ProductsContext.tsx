@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, PropsWithChildren } from 'react';
 
 import { ProductObj } from '../types/interfaces';
 
@@ -18,7 +18,7 @@ const ProductsContext = createContext({
 	getSearch: (param: string) => {null},
 });
 
-export function ProductsContextProvider(props: any){
+export const ProductsContextProvider =({ children }: PropsWithChildren<object>) => {
 	const [currentProducts, setCurrentProducts] = useState<any>([]);
 	const [currentCategories, setCurrentCategories] = useState<any>([]);
 	const [currentGroup, setCurrentGroup] = useState<any>([]);
@@ -88,7 +88,7 @@ export function ProductsContextProvider(props: any){
 
 	return (
 		<ProductsContext.Provider value={context}>
-			{props.children}
+			{children}
 		</ProductsContext.Provider>
 	);
 }
