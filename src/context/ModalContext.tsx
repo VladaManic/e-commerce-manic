@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, PropsWithChildren } from 'react';
 
 const ModalContext = createContext({
 	openFilter: false,
@@ -7,7 +7,7 @@ const ModalContext = createContext({
 	setOpenCart: (param: boolean) => {null},
 });
 
-export function ModalContextProvider(props: any){
+export const ModalContextProvider =({ children }: PropsWithChildren<object>) => {
 	const [currentOpenFilter, setCurrentOpenFilter] = useState<boolean>(false);
 	const [currentOpenCart, setCurrentOpenCart] = useState<boolean>(false);
 
@@ -28,7 +28,7 @@ export function ModalContextProvider(props: any){
 
 	return (
 		<ModalContext.Provider value={context}>
-			{props.children}
+			{children}
 		</ModalContext.Provider>
 	);
 }

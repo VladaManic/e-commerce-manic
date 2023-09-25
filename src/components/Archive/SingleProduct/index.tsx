@@ -1,19 +1,24 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import ProductsContext from '../../../context/products-context';
+import LoadingContext from '../../../context/LoadingContext';
+import ProductsContext from '../../../context/ProductsContext';
 import makeExcerpt from '../../../helpers/makeExcerpt';
 import clsx from 'clsx';
 
-import { SingleWrap, CartBtn, ImgWrap, FeaturedImg, PriceParagraph, TitleWrap, DescriptionWrap, FilterBtn } from './style';
+import Loader from '../../../layout/Loader';
+
+import { SingleWrap, CartBtn, ImgWrap, LoaderWrap, FeaturedImg, PriceParagraph, TitleWrap, DescriptionWrap, FilterBtn } from './style';
 import { ProductObj } from '../../../types/interfaces';
 
 interface Props {
 	single: ProductObj;
-	onClickCart: any;
+	onClickCart: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const SingleProduct = ({single, onClickCart}: Props) => {
+	const loadingCtx = useContext(LoadingContext);
 	const productsCtx = useContext(ProductsContext);
+	const [imgLoader, setImgLoader] = useState<boolean>(true);
 
 	const onClickHandler = () => {
 		productsCtx.getFilteredGroup(single.category);
@@ -26,7 +31,10 @@ const SingleProduct = ({single, onClickCart}: Props) => {
 			<CartBtn id={single.id.toString()} name={single.price.toString()} onClick={onClickCart}>+</CartBtn>
 			<NavLink to={`/article/${single.id}`}>
 				<ImgWrap>
-					<FeaturedImg src={single.image} alt={single.title} />
+					<LoaderWrap style={{display: imgLoader ? "block" : "none"}}>
+						<Loader />
+					</LoaderWrap>
+					<FeaturedImg src={single.image} alt={single.title} onLoad={() => setImgLoader(false)} style={{display: imgLoader ? "none" : "block"}} />
 				</ImgWrap>
 			</NavLink>
 			<PriceParagraph>{single.price} $</PriceParagraph>

@@ -1,15 +1,18 @@
 import { useContext } from 'react';
-import ProductsContext from '../../../context/products-context';
-import CartContext from '../../../context/cart-context';
-import ErrorContext from '../../../context/error-context';
+import LoadingContext from '../../../context/LoadingContext';
+import ProductsContext from '../../../context/ProductsContext';
+import CartContext from '../../../context/CartContext';
+import ErrorContext from '../../../context/ErrorContext';
 import isStorageSupported from '../../../helpers/isStorageSupported';
 
+import Loader from '../../../layout/Loader';
 import SingleProduct from '../SingleProduct';
 
 import { AllWrap } from './style';
 import { ProductObj, CartItem } from '../../../types/interfaces';
 
 const AllProducts = () => {
+	const loadingCtx = useContext(LoadingContext);
 	const productsCtx = useContext(ProductsContext);
 	const cartCtx = useContext(CartContext);
 	const errorCtx = useContext(ErrorContext);
@@ -36,11 +39,16 @@ const AllProducts = () => {
 	}
 
 	return (
-		<AllWrap>
-			{productsCtx.filteredGroup.map((singleProduct: ProductObj) => (
-				<SingleProduct key={singleProduct.id} single={singleProduct} onClickCart={onClickHandler} />
-			))}
-		</AllWrap>
+		<>
+			{ loadingCtx.loading ? ( <Loader /> ) :
+				<AllWrap>
+					{productsCtx.filteredGroup.map((singleProduct: ProductObj) => (
+						<SingleProduct key={singleProduct.id} single={singleProduct} onClickCart={onClickHandler} />
+					))}
+				</AllWrap>
+			}
+		</>
+		
 	)
 }
 

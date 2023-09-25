@@ -26,9 +26,20 @@ export const CartBtn = styled.button`
 `;
 
 export const ImgWrap = styled.div`
+   display: flex;
    width: 100%;
    height: 250px;
    margin-bottom: 15px;
+`;
+
+export const LoaderWrap = styled.div`
+   margin: auto;
+
+   .loader-inner {
+      border: 6px solid ${color.defaultWhite};
+      border-top: 6px solid ${color.loaderBlue};
+      border-right: 6px solid ${color.loaderBlue};
+   }
 `;
 
 export const FeaturedImg = styled.img`

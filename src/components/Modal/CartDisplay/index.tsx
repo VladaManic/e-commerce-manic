@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import CartContext from '../../../context/cart-context';
-import ErrorContext from '../../../context/error-context';
+import CartContext from '../../../context/CartContext';
+import ErrorContext from '../../../context/ErrorContext';
 import isStorageSupported from '../../../helpers/isStorageSupported';
 
 import CartProduct from '../CartProduct';

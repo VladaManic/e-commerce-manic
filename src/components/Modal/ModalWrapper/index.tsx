@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import ReactDom from 'react-dom';
-import ModalContext from '../../../context/modal-context';
+import ModalContext from '../../../context/ModalContext';
 
 import { ModalWrap, Overlay, ButtonWrap } from './style';
 
 interface Props {
-	children: any;
+	children: JSX.Element;
 	closeCondition: boolean;
-	onClose: any;
+	onClose: React.MouseEventHandler<HTMLButtonElement>;
 	elementAppend: HTMLElement | null | undefined;
 }
 

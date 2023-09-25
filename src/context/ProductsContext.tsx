@@ -1,8 +1,8 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, PropsWithChildren } from 'react';
 
-import { ProductObj } from '../types/interfaces';
+import { ProductObj, ProductCtxProperties } from '../types/interfaces';
 
-const ProductsContext = createContext({
+const ProductsContext = createContext<ProductCtxProperties>({
 	products: [],
 	allCategories: [],
 	filteredGroup: [],
@@ -18,10 +18,10 @@ const ProductsContext = createContext({
 	getSearch: (param: string) => {null},
 });
 
-export function ProductsContextProvider(props: any){
-	const [currentProducts, setCurrentProducts] = useState<any>([]);
-	const [currentCategories, setCurrentCategories] = useState<any>([]);
-	const [currentGroup, setCurrentGroup] = useState<any>([]);
+export const ProductsContextProvider =({ children }: PropsWithChildren<object>) => {
+	const [currentProducts, setCurrentProducts] = useState<ProductObj[]>([]);
+	const [currentCategories, setCurrentCategories] = useState<string[]>([]);
+	const [currentGroup, setCurrentGroup] = useState<ProductObj[]>([]);
 	const [currentCategory, setCurrentCategory] = useState<string>('All');
 	const [currentFilterSelected, setCurrentFilterSelected] = useState<boolean>(false);
 	const [currentSearchString, setCurrentSearchString] = useState<string>('');
@@ -88,7 +88,7 @@ export function ProductsContextProvider(props: any){
 
 	return (
 		<ProductsContext.Provider value={context}>
-			{props.children}
+			{children}
 		</ProductsContext.Provider>
 	);
 }
