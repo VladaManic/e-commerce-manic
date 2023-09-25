@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect, PropsWithChildren } from 'react';
 import isStorageSupported from '../helpers/isStorageSupported';
 
-import { CartItem } from '../types/interfaces';
+import { CartItem, CartCtxProperties } from '../types/interfaces';
 
-const CartContext = createContext({
+const CartContext = createContext<CartCtxProperties>({
 	items: [],
 	animationBoolean: false,
 	total: 0,
@@ -24,7 +24,7 @@ export const CartContextProvider =({ children }: PropsWithChildren<object>) => {
 			itemsStored = [];
 		}
 	}
-	const [currentItems, setCurrentItems] = useState<any>(itemsStored);
+	const [currentItems, setCurrentItems] = useState<CartItem[]>(itemsStored);
 	const [currentAnimation, setCurrentAnimation] = useState<boolean>(false);
 	const [currentTotal, setCurrentTotal] = useState<number>(0);
 

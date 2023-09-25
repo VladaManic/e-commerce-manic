@@ -1,8 +1,8 @@
 import { createContext, useState, PropsWithChildren } from 'react';
 
-import { ProductObj } from '../types/interfaces';
+import { ProductObj, ProductCtxProperties } from '../types/interfaces';
 
-const ProductsContext = createContext({
+const ProductsContext = createContext<ProductCtxProperties>({
 	products: [],
 	allCategories: [],
 	filteredGroup: [],
@@ -19,9 +19,9 @@ const ProductsContext = createContext({
 });
 
 export const ProductsContextProvider =({ children }: PropsWithChildren<object>) => {
-	const [currentProducts, setCurrentProducts] = useState<any>([]);
-	const [currentCategories, setCurrentCategories] = useState<any>([]);
-	const [currentGroup, setCurrentGroup] = useState<any>([]);
+	const [currentProducts, setCurrentProducts] = useState<ProductObj[]>([]);
+	const [currentCategories, setCurrentCategories] = useState<string[]>([]);
+	const [currentGroup, setCurrentGroup] = useState<ProductObj[]>([]);
 	const [currentCategory, setCurrentCategory] = useState<string>('All');
 	const [currentFilterSelected, setCurrentFilterSelected] = useState<boolean>(false);
 	const [currentSearchString, setCurrentSearchString] = useState<string>('');
