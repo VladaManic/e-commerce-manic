@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, PropsWithChildren } from 'react';
 
 const ErrorContext = createContext({
 	error: '',
@@ -7,7 +7,7 @@ const ErrorContext = createContext({
 	setLocalStorageError: (param: string) => {null},
 });
 
-export function ErrorContextProvider(props: any){
+export const ErrorContextProvider =({ children }: PropsWithChildren<object>) => {
 	const [currentError, setCurrentError] = useState<string>('');
 	const [currentLocalStorageError, setCurrentLocalStorageError] = useState<string>('');
 
@@ -28,7 +28,7 @@ export function ErrorContextProvider(props: any){
 
 	return (
 		<ErrorContext.Provider value={context}>
-			{props.children}
+			{children}
 		</ErrorContext.Provider>
 	);
 }

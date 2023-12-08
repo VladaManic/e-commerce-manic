@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import ProductsContext from '../../../context/products-context';
-import ModalContext from '../../../context/modal-context';
+import ProductsContext from '../../../context/ProductsContext';
+import ModalContext from '../../../context/ModalContext';
 import clsx from 'clsx';
 
 import { FilterWrap, TextWrap, SelectedCategory, FilterBtn } from './style';

@@ -1,9 +1,9 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, PropsWithChildren } from 'react';
 import isStorageSupported from '../helpers/isStorageSupported';
 
-import { CartItem } from '../types/interfaces';
+import { CartItem, CartCtxProperties } from '../types/interfaces';
 
-const CartContext = createContext({
+const CartContext = createContext<CartCtxProperties>({
 	items: [],
 	animationBoolean: false,
 	total: 0,
@@ -12,7 +12,7 @@ const CartContext = createContext({
 	setAnimation: () => {null},
 });
 
-export function CartContextProvider(props: any){
+export const CartContextProvider =({ children }: PropsWithChildren<object>) => {
 	//localStorage.clear();
 	let itemsStored;
 	if (!isStorageSupported("localStorage")) {
@@ -24,7 +24,7 @@ export function CartContextProvider(props: any){
 			itemsStored = [];
 		}
 	}
-	const [currentItems, setCurrentItems] = useState<any>(itemsStored);
+	const [currentItems, setCurrentItems] = useState<CartItem[]>(itemsStored);
 	const [currentAnimation, setCurrentAnimation] = useState<boolean>(false);
 	const [currentTotal, setCurrentTotal] = useState<number>(0);
 
@@ -68,7 +68,7 @@ export function CartContextProvider(props: any){
 
 	return (
 		<CartContext.Provider value={context}>
-			{props.children}
+			{children}
 		</CartContext.Provider>
 	);
 }

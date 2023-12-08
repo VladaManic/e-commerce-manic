@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import CartContext from '../../context/cart-context';
-import ModalContext from '../../context/modal-context';
+import CartContext from '../../context/CartContext';
+import ModalContext from '../../context/ModalContext';
 import clsx from 'clsx';
 
 import { HeaderWrap, LogoWrap, CartBadge, CartIcon, CartCount, CartNumber, AnimationWrap, CartAnimation } from './style';

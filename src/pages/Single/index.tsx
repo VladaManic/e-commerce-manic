@@ -1,12 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useParams } from "react-router-dom";
-import ProductsContext from '../../context/products-context';
-import CartContext from '../../context/cart-context';
-import ErrorContext from '../../context/error-context';
+import ProductsContext from '../../context/ProductsContext';
+import CartContext from '../../context/CartContext';
+import ErrorContext from '../../context/ErrorContext';
 import isStorageSupported from '../../helpers/isStorageSupported';
+import clsx from 'clsx';
 
-import { SingleWrapper, ImageWrap, BackIcon, ProductImg, DataWrap, Price, QuantityWrap, TotalPrice, CartBtn, Category, Title, Description } from './style';
+import Loader from '../../layout/Loader';
+
+import { LoaderWrap, SingleWrapper, ImageWrap, BackIcon, ProductImg, DataWrap, Price, QuantityWrap, TotalPrice, CartBtn, Category, Title, Description } from './style';
 import backIcon from '../../assets/img/back-icon.png';
 import { ProductObj, CartItem } from '../../types/interfaces';
 
@@ -17,9 +20,10 @@ const Single = () => {
 	//Getting param from URL
 	const { id } = useParams();
 	const intId = Number(id);
-	const [ singleProduct, setSingleProduct ] = useState<ProductObj | undefined>();
-	const [ inputVal, setInputVal ] = useState<number>(1);
-	const [ totalPrice, setTotalPrice ] = useState<number | undefined>();
+	const [loaderSingle, setLoaderSingle] = useState<boolean>(true);
+	const [singleProduct, setSingleProduct] = useState<ProductObj | undefined>();
+	const [inputVal, setInputVal] = useState<number>(1);
+	const [totalPrice, setTotalPrice] = useState<number | undefined>();
 	
 	useEffect(() => {
 		const newObj = productsCtx.products.filter((obj: ProductObj) => obj.id === intId);
@@ -58,7 +62,8 @@ const Single = () => {
 			newCartItems = cartCtx.items.map((item: CartItem) => item.id === intId ? { ...item, quantity: newQuantity, price: singleProduct!.price, total: totalPrice} : item);
 		//If product is added for the first time
 		} else {
-			newCartItems = [...cartCtx.items, {id: intId, quantity: quantity, price: singleProduct!.price, total: singleProduct!.price}]
+			const calculatedTotal = quantity * singleProduct!.price;
+			newCartItems = [...cartCtx.items, {id: intId, quantity: quantity, price: singleProduct!.price, total: calculatedTotal}]
 		}
 		isStorageSupported("localStorage") ? localStorage.setItem('items', JSON.stringify(newCartItems)) : errorCtx.setLocalStorageError('No local storage is available!');
 		cartCtx.setItems(newCartItems);
@@ -66,25 +71,30 @@ const Single = () => {
 	}
 
 	return (
-		<SingleWrapper>
-			<ImageWrap>
-				<NavLink to={`/`} end onClick={onClickBackHandler}>
-					<BackIcon src={backIcon} alt="Back to archive page" />
-				</NavLink>
-				<ProductImg src={singleProduct?.image} alt={singleProduct?.title} />
-			</ImageWrap>
-			<DataWrap>
-				<Price>{singleProduct?.price} $</Price>
-				<QuantityWrap>
-					<input type="number" id="quantity" name={singleProduct?.price.toString()} className="number-input" value={inputVal} min="1" onChange={onChangeHandler} onKeyDown={(e) => {e.preventDefault();}} />
-					<TotalPrice>{totalPrice ? totalPrice : singleProduct?.price} $</TotalPrice>
-				</QuantityWrap>
-				<CartBtn value={inputVal.toString()} onClick={onClickHandler}>Add to cart</CartBtn>
-				<Category>{singleProduct?.category}</Category>
-				<Title>{singleProduct?.title}</Title>
-				<Description>{singleProduct?.description}</Description>
-			</DataWrap>
-		</SingleWrapper>
+		<>
+			<LoaderWrap className={clsx(!loaderSingle && 'hide')}>
+				<Loader />
+			</LoaderWrap>
+			<SingleWrapper className={clsx(loaderSingle && 'hide')}>
+				<ImageWrap>
+					<NavLink to={`/`} end onClick={onClickBackHandler}>
+						<BackIcon src={backIcon} alt="Back to archive page" />
+					</NavLink>
+					<ProductImg src={singleProduct?.image} alt={singleProduct?.title} onLoad={() => setLoaderSingle(false)} />
+				</ImageWrap>
+				<DataWrap>
+					<Price>{singleProduct?.price} $</Price>
+					<QuantityWrap>
+						<input type="number" id="quantity" name={singleProduct?.price.toString()} className="number-input" value={inputVal} min="1" onChange={onChangeHandler} onKeyDown={(e) => {e.preventDefault();}} />
+						<TotalPrice>{totalPrice ? totalPrice : singleProduct?.price} $</TotalPrice>
+					</QuantityWrap>
+					<CartBtn value={inputVal.toString()} onClick={onClickHandler}>Add to cart</CartBtn>
+					<Category>{singleProduct?.category}</Category>
+					<Title>{singleProduct?.title}</Title>
+					<Description>{singleProduct?.description}</Description>
+				</DataWrap>
+			</SingleWrapper>
+		</>
 	)
 }
 

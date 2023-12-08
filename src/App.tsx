@@ -1,18 +1,20 @@
 import {useEffect, useContext} from 'react';
 import GeneralStyles from './shared/styles/GeneralStyles';
-import ErrorContext from './context/error-context';
-import ProductsContext from './context/products-context';
+import LoadingContext from './context/LoadingContext';
+import ErrorContext from './context/ErrorContext';
+import ProductsContext from './context/ProductsContext';
 
 import Header from './layout/Header';
 import Main from './layout/Main';
 
 function App() {
+  const loadingCtx = useContext(LoadingContext);
   const errorCtx = useContext(ErrorContext);
   const productsCtx = useContext(ProductsContext);
 
-  const handleError = async (error: any) => {
+  const handleError = (error: ReferenceError) => {
     errorCtx.setError(error.message)
-    await console.log(error.message);
+    console.log(error.message);
   }
 
   const fetchData = () => {
@@ -20,6 +22,7 @@ function App() {
       .then(res=>res.json())
       .then((data) => {
 				productsCtx.setData(data);
+        loadingCtx.setLoading(false);
       })
       .catch(error => handleError(error));
 

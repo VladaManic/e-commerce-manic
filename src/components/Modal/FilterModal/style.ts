@@ -10,7 +10,18 @@ export const TitleWrap = styled.p`
 	font-weight: 700;
 `;
 
+export const LoaderWrap = styled.div`
+	&.hide {
+		display: none;
+	}
+`;
+
 export const FiltersWrap = styled.div`
+	display: flex;
 	margin-bottom: 30px;
-	text-align: center;
+	justify-content: center;
+
+	&.hide {
+		display: none;
+	}
 `;
